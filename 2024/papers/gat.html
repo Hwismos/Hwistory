@@ -1,15 +1,51 @@
-<p>[##_Image|kage@bliOSa/btsFogbu0gx/iGgFDqfP17VwCmCd1EFAZk/img.png|CDM|1.3|{"originWidth":549,"originHeight":259,"style":"alignCenter","caption":"Figure 1: Left: The attention mechanism. Right: multi-head attention (K=3)"}_##]</p>
-<p data-ke-size="size16"><b><i>Abstract</i></b></p>
-<p data-ke-size="size16">- 각각의 이웃 노드에 대하여 상이한 중요도를 부여할 수 있음</p>
+<p>
+  [##_Image|kage@bliOSa/btsFogbu0gx/iGgFDqfP17VwCmCd1EFAZk/img.png|CDM|1.3|{"originWidth":549,"originHeight":259,"style":"alignCenter","caption":"Figure
+  1: Left: The attention mechanism. Right: multi-head attention (K=3)"}_##]
+</p>
+<p data-ke-size="size16">
+  <b><i>Abstract</i></b>
+</p>
+<p data-ke-size="size16">
+  - 각각의 이웃 노드에 대하여 상이한 중요도를 부여할 수 있음
+</p>
 <p data-ke-size="size16">&nbsp;</p>
-<p data-ke-size="size16"><b><i>Introduction</i></b></p>
-<p data-ke-size="size16">- 기존 spectral 방식들은 특정 구조에서 학습한 모델을 다른 구조의 그래프에서 사용할 수 없다는 한계점이 있음</p>
-<p data-ke-size="size16">- GraphSAGE는 대표적인 spatial 방식으로 각 노드마다 고정된 사이즈의 이웃 노드들을 샘플링한 뒤 특정 병합 연산을 취함으로써 inductive 상황에서도 동작하게 하였음</p>
+<p data-ke-size="size16">
+  <b><i>Introduction</i></b>
+</p>
+<p data-ke-size="size16">
+  - 기존 spectral 방식들은 특정 구조에서 학습한 모델을 다른 구조의 그래프에서
+  사용할 수 없다는 한계점이 있음
+</p>
+<p data-ke-size="size16">
+  - GraphSAGE는 대표적인 spatial 방식으로 각 노드마다 고정된 사이즈의 이웃
+  노드들을 샘플링한 뒤 특정 병합 연산을 취함으로써 inductive 상황에서도 동작하게
+  하였음
+</p>
 <p data-ke-size="size16">&nbsp;</p>
-<p data-ke-size="size16"><b><i>GAT Architecture</i></b></p>
-<p data-ke-size="size16">- Figure 1의 Left와 같이 노드 \(i\)와 노드 \(i\)의 이웃 노드 집합에 속한 노드 \(j\) 벡터를 각각 선형변환 시킨 뒤 연결(concate) 연산하고 어텐션 메커니즘을 위한 순전파 신경망(\(\overrightarrow{a}\)) 벡터와 LeakyReLU 활성화 함수를 적용, 최종적으로 소프트맥스 함수를 취함으로써 두 노드 \(i\)와 \(j\) 간의 어텐션 스코어를 계산함</p>
+<p data-ke-size="size16">
+  <b><i>GAT Architecture</i></b>
+</p>
+<p data-ke-size="size16">
+  - Figure 1의 Left와 같이 노드 \(i\)와 노드 \(i\)의 이웃 노드 집합에 속한 노드
+  \(j\) 벡터를 각각 선형변환 시킨 뒤 연결(concate) 연산하고 어텐션 메커니즘을
+  위한 순전파 신경망(\(\overrightarrow{a}\)) 벡터와 LeakyReLU 활성화 함수를
+  적용, 최종적으로 소프트맥스 함수를 취함으로써 두 노드 \(i\)와 \(j\) 간의
+  어텐션 스코어를 계산함
+</p>
 <p data-ke-size="size16">&nbsp;</p>
-<p data-ke-size="size16"><b><i>Evaluation</i></b></p>
-<p data-ke-size="size16">- Transductive 학습과 Inductive 학습 성능 모두 SOTA 모델보다 우수함을 실험을 통해 보임</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-<p data-ke-size="size16">Veličković, Petar, et al. "Graph attention networks."&nbsp;arXiv preprint arXiv:1710.10903&nbsp;(2017).</p>
+<p data-ke-size="size16">
+  <b><i>Evaluation</i></b>
+</p>
+<p data-ke-size="size16">
+  - Transductive 학습과 Inductive 학습 성능 모두 SOTA 모델보다 우수함을 실험을
+  통해 보임
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
+<p data-ke-size="size16">
+  Veličković, Petar, et al. "Graph attention networks."&nbsp;arXiv preprint
+  arXiv:1710.10903&nbsp;(2017).
+</p>

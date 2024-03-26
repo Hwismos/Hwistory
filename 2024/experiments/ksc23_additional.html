@@ -1,29 +1,141 @@
 <p data-ke-size="size16">
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </p>
 <p data-ke-size="size18"><b>실험 목적</b></p>
-<p data-ke-size="size16">&bull;간선의 동질성을 학습하고 이를 바탕으로 동질 그래프( \(G_{hm}\) )와 이질 그래프( \(G_{ht}\) )를 생성한 뒤 각 그래프를 로우패스(low-pass), 하이패스(high-pass) 필터로 이용하여 주변 관계 정보(local information)를 학습하는 채널을 기준으로, 특징 정보( \(X\) )와 관계 정보( \(A\) )를 학습하는 각 채널과의 중요도(attention)를 고려하여 세 채널을 혼합하였을 때의 노드 분류 정확도를 확인함</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull;간선의 동질성을 학습하고 이를 바탕으로 동질 그래프( \(G_{hm}\) )와 이질
+  그래프( \(G_{ht}\) )를 생성한 뒤 각 그래프를 로우패스(low-pass),
+  하이패스(high-pass) 필터로 이용하여 주변 관계 정보(local information)를
+  학습하는 채널을 기준으로, 특징 정보( \(X\) )와 관계 정보( \(A\) )를 학습하는
+  각 채널과의 중요도(attention)를 고려하여 세 채널을 혼합하였을 때의 노드 분류
+  정확도를 확인함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size18"><b>가설</b></p>
-<p data-ke-size="size16">&bull;대조 학습의 양성 샘플을 생성하기 위한 kNN 알고리즘의 하이퍼파라미터 K가 0일 때 가장 높은 성능을 보인 chameleon과 squirrel의 어텐션 스코어( \(\sigma\) )는 상대적으로 관계 정보 쪽이 우세할 것이고, K가 0이 아닌 다른 데이터셋들은 앞선 두 데이터셋에 비해 특징 정보 쪽의 어텐션 스코어가 더 높을 것으로 예상함</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull;대조 학습의 양성 샘플을 생성하기 위한 kNN 알고리즘의 하이퍼파라미터 K가
+  0일 때 가장 높은 성능을 보인 chameleon과 squirrel의 어텐션 스코어( \(\sigma\)
+  )는 상대적으로 관계 정보 쪽이 우세할 것이고, K가 0이 아닌 다른 데이터셋들은
+  앞선 두 데이터셋에 비해 특징 정보 쪽의 어텐션 스코어가 더 높을 것으로 예상함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size18"><b>실험 방법</b></p>
-<p data-ke-size="size16">&bull;[그림 1]의 설계도와 같이 각 채널은 노드의 개수(N)와 차원의 수(D)로 구성된 표현 행렬( \(H \in \mathbb{R}^{N \times D}\) )을 생성함. 각 표현 행렬을 torch의 mean API를 이용해 벡터( \(\overrightarrow{H}\) )로 변환한 뒤, 연결(concate) 연산을 이용해 \( \overrightarrow{H}_1 \parallel \overrightarrow{H}_1\), \( \overrightarrow{H}_1 \parallel \overrightarrow{H}_2\), \( \overrightarrow{H}_1 \parallel \overrightarrow{H}_3 \in \mathbb{R}^{2D} \) 의 조합을 생성, 이를 어텐션 벡터인 \(\alpha_{11}, \alpha_{12} , \alpha_{13} \in \mathbb{R}^{2D} \)과 내적하고 활성화 함수와 소프트맥스 함수를 거쳐 최종적인 3개의 어텐션 스코어 스칼라를 생성함</p>
-<p data-ke-size="size16">&bull;[표 2]의 결과 상 \( \alpha_{11} \)이 대부분 0인 것에 의문을 품고 추가 실험을 진행함. \( \alpha_{11} \) <span style="color: #333333; text-align: left;">을 1로 설정함에 따라 소프트맥스 함수의 인자를 \( \alpha_{12} \) <span style="color: #333333; text-align: left;">과 \( \alpha_{13} \)으<span style="color: #333333; text-align: left;">로만 구성함. 기존 채널에서 나온 표현은 그대로 유지한 채로 특징 정보, 구조 정보를 학습하여 나온 표현에 중요도만큼의 가중치를 부여한 뒤 합하여 최종 표현을 생성함</span></span></span></p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull;[그림 1]의 설계도와 같이 각 채널은 노드의 개수(N)와 차원의 수(D)로
+  구성된 표현 행렬( \(H \in \mathbb{R}^{N \times D}\) )을 생성함. 각 표현 행렬을
+  torch의 mean API를 이용해 벡터( \(\overrightarrow{H}\) )로 변환한 뒤,
+  연결(concate) 연산을 이용해 \( \overrightarrow{H}_1 \parallel
+  \overrightarrow{H}_1\), \( \overrightarrow{H}_1 \parallel
+  \overrightarrow{H}_2\), \( \overrightarrow{H}_1 \parallel \overrightarrow{H}_3
+  \in \mathbb{R}^{2D} \) 의 조합을 생성, 이를 어텐션 벡터인 \(\alpha_{11},
+  \alpha_{12} , \alpha_{13} \in \mathbb{R}^{2D} \)과 내적하고 활성화 함수와
+  소프트맥스 함수를 거쳐 최종적인 3개의 어텐션 스코어 스칼라를 생성함
+</p>
+<p data-ke-size="size16">
+  &bull;[표 2]의 결과 상 \( \alpha_{11} \)이 대부분 0인 것에 의문을 품고 추가
+  실험을 진행함. \( \alpha_{11} \)
+  <span style="color: #333333; text-align: left"
+    >을 1로 설정함에 따라 소프트맥스 함수의 인자를 \( \alpha_{12} \)
+    <span style="color: #333333; text-align: left"
+      >과 \( \alpha_{13} \)으<span style="color: #333333; text-align: left"
+        >로만 구성함. 기존 채널에서 나온 표현은 그대로 유지한 채로 특징 정보,
+        구조 정보를 학습하여 나온 표현에 중요도만큼의 가중치를 부여한 뒤 합하여
+        최종 표현을 생성함</span
+      ></span
+    ></span
+  >
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size18"><b>실험 결과</b></p>
-<p data-ke-size="size16">&bull;[표 1]을 통해 채널 간의 중요도를 고려한 혼합 방법이 채널을 혼합하지 않은 초기의 모델보다는 우수하고, 다층 퍼셉트론을 이용한 혼합과는 비슷한 수준의 성능을 보임을 확인하였음. [표 2]를 통해 small dataset(texas, cornell, wisconsin)은 기존 채널(\( H_{1}\))보다도 특징 정보를 학습한 채널( \(H_{2}\))에 높은 중요도를 부여하고, 이와 반대로 chameleon과 squirrel은 구조 정보 ( \(H_{3}\)) 를 학습한 채널에 높은 중요도를 부여하였음을 확인함. actor 역시 기존 채널보다도 특징과 구조 정보를 학습한 채널에 높은 중요도를 부여하였지만 앞선 다섯 datasets과 달리 상대적으로 고른 분포 수준을 보였음. 특히 대조 학습을 위한 동질 그래프와 이질 그래프를 생성하는 encoder 1과 encoder 2 내의 어텐션 분포가 앞선 다섯 가지 데이터셋과는 다른 경향을 보였는데, 이는 이질 그래프를 생성하는 encoder 2가 encoder 1과 비교할 때 구조 정보에 더 많이 의존적임을 나타냄</p>
-<p data-ke-size="size16">&bull;[표 3]에서 \( \alpha_{11} \)을 1로 설정한 모델을 'Accuracy(std) without att11'로 명명하였고, [표 1]의 'New acc(std)'은 'Accuracy(std) with att11'로 명명함. [표 3]의 결과를 통해 \( \alpha_{11} \)이 채널 간의 중요도를 고려한 혼합에 있어 명확한 기능을 하고 있지 않음을 확인함</p>
-<p data-ke-size="size16">&bull;[표 4]를 통해 without att11 모델의 어텐션의 분포를 제시함. 일부 데이터셋에 해당하는 열은 [표 2]와 동일하거나 매우 흡사하여 명시하지 않았고 상대적으로 차이를 보인 chameleon, actor 데이터셋의 열만을 명시함. chameleon 데이터셋의 경우 기존 채널을 이용하지 않았을 때는 구조 정보 학습에 매진한 데에 반해, 기존 채널을 이용하는 경우 특징 정보를 일부 이용하는 경향을 보였음. actor는 이와 반대로 기존 채널을 이용하지 않는 경우 특징과 구조 정보를 상대적으로 고르게 학습하였고, 기존 채널을 이용하는 경우 구조 정보 학습에 집중하는 현상을 보였음</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull;[표 1]을 통해 채널 간의 중요도를 고려한 혼합 방법이 채널을 혼합하지 않은
+  초기의 모델보다는 우수하고, 다층 퍼셉트론을 이용한 혼합과는 비슷한 수준의
+  성능을 보임을 확인하였음. [표 2]를 통해 small dataset(texas, cornell,
+  wisconsin)은 기존 채널(\( H_{1}\))보다도 특징 정보를 학습한 채널( \(H_{2}\))에
+  높은 중요도를 부여하고, 이와 반대로 chameleon과 squirrel은 구조 정보 (
+  \(H_{3}\)) 를 학습한 채널에 높은 중요도를 부여하였음을 확인함. actor 역시 기존
+  채널보다도 특징과 구조 정보를 학습한 채널에 높은 중요도를 부여하였지만 앞선
+  다섯 datasets과 달리 상대적으로 고른 분포 수준을 보였음. 특히 대조 학습을 위한
+  동질 그래프와 이질 그래프를 생성하는 encoder 1과 encoder 2 내의 어텐션 분포가
+  앞선 다섯 가지 데이터셋과는 다른 경향을 보였는데, 이는 이질 그래프를 생성하는
+  encoder 2가 encoder 1과 비교할 때 구조 정보에 더 많이 의존적임을 나타냄
+</p>
+<p data-ke-size="size16">
+  &bull;[표 3]에서 \( \alpha_{11} \)을 1로 설정한 모델을 'Accuracy(std) without
+  att11'로 명명하였고, [표 1]의 'New acc(std)'은 'Accuracy(std) with att11'로
+  명명함. [표 3]의 결과를 통해 \( \alpha_{11} \)이 채널 간의 중요도를 고려한
+  혼합에 있어 명확한 기능을 하고 있지 않음을 확인함
+</p>
+<p data-ke-size="size16">
+  &bull;[표 4]를 통해 without att11 모델의 어텐션의 분포를 제시함. 일부
+  데이터셋에 해당하는 열은 [표 2]와 동일하거나 매우 흡사하여 명시하지 않았고
+  상대적으로 차이를 보인 chameleon, actor 데이터셋의 열만을 명시함. chameleon
+  데이터셋의 경우 기존 채널을 이용하지 않았을 때는 구조 정보 학습에 매진한 데에
+  반해, 기존 채널을 이용하는 경우 특징 정보를 일부 이용하는 경향을 보였음.
+  actor는 이와 반대로 기존 채널을 이용하지 않는 경우 특징과 구조 정보를
+  상대적으로 고르게 학습하였고, 기존 채널을 이용하는 경우 구조 정보 학습에
+  집중하는 현상을 보였음
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size18"><b>시각 자료</b></p>
 <p data-ke-size="size16">&bull;</p>
-<p>[##_Image|kage@IV459/btsFuHtie94/aps584meAhLXdVZnmXHqn1/img.png|CDM|1.3|{"originWidth":508,"originHeight":217,"style":"alignCenter","caption":"그림1: 설계"}_##][##_Image|kage@KgkQk/btsFxWJpBcW/LPKDkAvwR145r3DUb7WRK1/img.png|CDM|1.3|{"originWidth":407,"originHeight":191,"style":"alignCenter","caption":"표 1: 세 개의 어텐션 스코어를 고려한 모델의 성능"}_##][##_Image|kage@copjz7/btsFwDcaOjl/4CppZwAykB6F4glCjsXRMk/img.png|CDM|1.3|{"originWidth":1213,"originHeight":110,"style":"alignCenter","caption":"표 2: 어텐션 스코어의 분포"}_##][##_Image|kage@mHg3i/btsFqKKaC68/9c8Vr6ZJeWZYDV4EXgeH7K/img.png|CDM|1.3|{"originWidth":474,"originHeight":191,"style":"alignCenter","caption":"표 3: 두 개의 어텐션 스코어를 고려한 모델의 성능을 [표 1]에서 제시한 New 모델(=with att11)과 비교"}_##][##_Image|kage@Fur7n/btsFxZlPqBH/EpoFkipOceuAJVqwqfTPw1/img.png|CDM|1.3|{"originWidth":902,"originHeight":110,"style":"alignCenter","caption":"표 4: without att11 모델의 어텐션 스코어 분포"}_##]</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p>
+  [##_Image|kage@IV459/btsFuHtie94/aps584meAhLXdVZnmXHqn1/img.png|CDM|1.3|{"originWidth":508,"originHeight":217,"style":"alignCenter","caption":"그림1:
+  설계"}_##][##_Image|kage@KgkQk/btsFxWJpBcW/LPKDkAvwR145r3DUb7WRK1/img.png|CDM|1.3|{"originWidth":407,"originHeight":191,"style":"alignCenter","caption":"표
+  1: 세 개의 어텐션 스코어를 고려한 모델의
+  성능"}_##][##_Image|kage@copjz7/btsFwDcaOjl/4CppZwAykB6F4glCjsXRMk/img.png|CDM|1.3|{"originWidth":1213,"originHeight":110,"style":"alignCenter","caption":"표
+  2: 어텐션 스코어의
+  분포"}_##][##_Image|kage@mHg3i/btsFqKKaC68/9c8Vr6ZJeWZYDV4EXgeH7K/img.png|CDM|1.3|{"originWidth":474,"originHeight":191,"style":"alignCenter","caption":"표
+  3: 두 개의 어텐션 스코어를 고려한 모델의 성능을 [표 1]에서 제시한 New
+  모델(=with att11)과
+  비교"}_##][##_Image|kage@Fur7n/btsFxZlPqBH/EpoFkipOceuAJVqwqfTPw1/img.png|CDM|1.3|{"originWidth":902,"originHeight":110,"style":"alignCenter","caption":"표
+  4: without att11 모델의 어텐션 스코어 분포"}_##]
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size18"><b>결론</b></p>
-<p data-ke-size="size16">&bull;본 실험은 MLP를 이용하여 채널 간 혼합을 수행하였던 기존 연구에 채널별 어텐션 스코어를 고려함으로써 채널별 중요도를 확인하고 이를 바탕으로 한 모델의 성능을 기존 모델과 비교하고자 하였음. 결과적으로 채널을 혼합함에 있어 MLP를 이용하든 어텐션 알고리즘을 이용하든 성능 자체에 대한 변화는 미미한 수준이었음. 하지만 특징과 구조 정보를 학습하는 채널을 추가한 설계가 기존 채널(\(H_{1}\))의 학습 정도를 도운 수준이 아닐 수 있다는 의문을 갖게 되었음. 이를 위해 기존 채널 없이 특징, 구조 정보를 각각 학습한 채널로부터의 모델 성능을 확인하는 실험을 진행하고자 함</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull;본 실험은 MLP를 이용하여 채널 간 혼합을 수행하였던 기존 연구에 채널별
+  어텐션 스코어를 고려함으로써 채널별 중요도를 확인하고 이를 바탕으로 한 모델의
+  성능을 기존 모델과 비교하고자 하였음. 결과적으로 채널을 혼합함에 있어 MLP를
+  이용하든 어텐션 알고리즘을 이용하든 성능 자체에 대한 변화는 미미한 수준이었음.
+  하지만 특징과 구조 정보를 학습하는 채널을 추가한 설계가 기존 채널(\(H_{1}\))의
+  학습 정도를 도운 수준이 아닐 수 있다는 의문을 갖게 되었음. 이를 위해 기존 채널
+  없이 특징, 구조 정보를 각각 학습한 채널로부터의 모델 성능을 확인하는 실험을
+  진행하고자 함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size18"><b>기타</b></p>
-<p data-ke-size="size16">&bull;실험의 편의성을 위해 난잡하게 정의되고 삽입되었던 함수와 커맨드들을 클래스 단위로 묶어서 정리함</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull;실험의 편의성을 위해 난잡하게 정의되고 삽입되었던 함수와 커맨드들을
+  클래스 단위로 묶어서 정리함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>

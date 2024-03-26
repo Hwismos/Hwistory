@@ -1,37 +1,143 @@
 <p data-ke-size="size16">
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </p>
-<p data-ke-size="size18"><b>Information Theory, Inference, and Learning Algorithms (Mackay)</b></p>
+<p data-ke-size="size18">
+  <b>Information Theory, Inference, and Learning Algorithms (Mackay)</b>
+</p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.03.07]</i></p>
-<p data-ke-size="size16">&bull; 정보 이론은 정보의 잡음, 손실 등을 최소화시키기 위한 방법론. 정보가 많으면 불확실성(엔트로피)이 낮아짐. 샤논 정보 이론에 따르면 절반의 속도 감소로 100% 수준의 데이터 복원이 가능함</p>
-<p data-ke-size="size16">&bull; bent coin 예제에서 확률변수는 1(앞)과 0(뒤)이며 각 수치의 결과는 독립적으로 발생함. 따라서 앞면이 나오는 개수(r)는 각 시행의 확률변수의 합과 같음</p>
-<p data-ke-size="size16">&bull; 포아송 분포의 \(\lambda\)는 한정된 시간 내에 특정 이벤트의 평균 발생 정도를 의미하며, 이 값이 매우 클 때 포아송 분포를 가우시안 분포로 근사할 수 있음. 이를 이용하여 팩토리얼에 대한 Stirling(스털린) 근사를 할 수 있고, N번 동전을 던졌을 때 앞면이 r번 나오는 경우의 수에 로그(log)를 취한 값을 이진 엔트로피 함수(binary entropy function)로 근사할 수 있음</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull; 정보 이론은 정보의 잡음, 손실 등을 최소화시키기 위한 방법론. 정보가
+  많으면 불확실성(엔트로피)이 낮아짐. 샤논 정보 이론에 따르면 절반의 속도 감소로
+  100% 수준의 데이터 복원이 가능함
+</p>
+<p data-ke-size="size16">
+  &bull; bent coin 예제에서 확률변수는 1(앞)과 0(뒤)이며 각 수치의 결과는
+  독립적으로 발생함. 따라서 앞면이 나오는 개수(r)는 각 시행의 확률변수의 합과
+  같음
+</p>
+<p data-ke-size="size16">
+  &bull; 포아송 분포의 \(\lambda\)는 한정된 시간 내에 특정 이벤트의 평균 발생
+  정도를 의미하며, 이 값이 매우 클 때 포아송 분포를 가우시안 분포로 근사할 수
+  있음. 이를 이용하여 팩토리얼에 대한 Stirling(스털린) 근사를 할 수 있고, N번
+  동전을 던졌을 때 앞면이 r번 나오는 경우의 수에 로그(log)를 취한 값을 이진
+  엔트로피 함수(binary entropy function)로 근사할 수 있음
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size16"><i>[24.03.11]</i></p>
-<p data-ke-size="size16">&bull; 상호정보량(\(I(X; Y)\))은 y에 대한 학습의 결과부터 평균적으로 감소하는 x에 대한 불확실성의 정도</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull; 상호정보량(\(I(X; Y)\))은 y에 대한 학습의 결과부터 평균적으로 감소하는
+  x에 대한 불확실성의 정도
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size16"><i>[24.03.12]</i></p>
-<p data-ke-size="size16">&bull; 실험자/관찰자(observer)가 관심을 갖고 있는 변수가 확률변수. 확률변수의 값들에 대한 확률값이 확률분포</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull; 실험자/관찰자(observer)가 관심을 갖고 있는 변수가 확률변수. 확률변수의
+  값들에 대한 확률값이 확률분포
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size16"><i>[24.03.14]</i></p>
-<p data-ke-size="size16">&bull; 관찰자의 입장에서 우도(likelihood)는 매개변수에 의한 데이터의 관찰 가능성</p>
-<p data-ke-size="size16">&bull; \(\Gamma(k) = \int_{0}^{\infty}{x^{k-1}e^{-x}dx} = (k-1)!\). \(B(x,y) = \int_{0}^{1}{f^{x-1}(1-f)^{y-1}dxdy} = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}\). 선형변환은 벡터공간을 변형시킴. 자코비안(Jacobian) 행렬(\(\mathbb{R}^{m \times n}\))은 벡터(\(\mathbf{v} \in \mathbb{R}^n\))에 의한 함수(\(f : \mathbb{R}^n \rightarrow \mathbb{R}^m\))의 변화량</p>
-<p data-ke-size="size16">&bull; 볼록(convex) 함수에서의 얀센 부등식(Jensen's inequality)은 \(E[f(x)] \geqslant f(E[x])\)</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull; 관찰자의 입장에서 우도(likelihood)는 매개변수에 의한 데이터의 관찰
+  가능성
+</p>
+<p data-ke-size="size16">
+  &bull; \(\Gamma(k) = \int_{0}^{\infty}{x^{k-1}e^{-x}dx} = (k-1)!\). \(B(x,y) =
+  \int_{0}^{1}{f^{x-1}(1-f)^{y-1}dxdy} =
+  \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}\). 선형변환은 벡터공간을 변형시킴.
+  자코비안(Jacobian) 행렬(\(\mathbb{R}^{m \times n}\))은 벡터(\(\mathbf{v} \in
+  \mathbb{R}^n\))에 의한 함수(\(f : \mathbb{R}^n \rightarrow \mathbb{R}^m\))의
+  변화량
+</p>
+<p data-ke-size="size16">
+  &bull; 볼록(convex) 함수에서의 얀센 부등식(Jensen's inequality)은 \(E[f(x)]
+  \geqslant f(E[x])\)
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size16"><i>[24.03.20]</i></p>
-<p data-ke-size="size16">&bull; 곱의 법칙: \( P(x, y | H) \equiv P(x | y, H)P(y|H) \ \ \because \frac{P(x, y ,H)}{P(H)} \equiv \frac{P(x, y, H)}{P(y, H)}\frac{P(y, H)}{P(H)} \). 관찰자가 H와 y 각각에 대한 정보와 둘 사이의 관계에 대한 정보를 알고 있다면, H로부터 x와 y의 교집합에 대한 정보를 추론할 수 있음</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull; 곱의 법칙: \( P(x, y | H) \equiv P(x | y, H)P(y|H) \ \ \because
+  \frac{P(x, y ,H)}{P(H)} \equiv \frac{P(x, y, H)}{P(y, H)}\frac{P(y, H)}{P(H)}
+  \). 관찰자가 H와 y 각각에 대한 정보와 둘 사이의 관계에 대한 정보를 알고
+  있다면, H로부터 x와 y의 교집합에 대한 정보를 추론할 수 있음
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
 <p data-ke-size="size16"><i>[24.03.21]</i></p>
-<p data-ke-size="size16">&bull; 관찰자는 피관찰자가 \(N\)번의 복원 추출 과정에서 항아리 \(u\)로부터 검은 공을 \(n_{B}\)번 뽑는 확률을 곱의 법칙을 이용하여 식 (1)과 같이 표현할 수 있음. \(n_B\)개의 공을 꺼낼 확률을 전확률의 법칙에 따라 식 (2)와 같이 표현할 수 있음. 베이즈 정리에 따라 \(N\)번의 복원 추출에서 \(n_B\)개의 검은 공을 꺼냈을 때 항아리가 \(u\)일 사후확률을 식 (3)과 같이 표현할 수 있음. 식 (3)에서의 사전확률은 \(P(u|N) = P(u)\)이며 우도는 \(P(n_B | u, N)\)</p>
-<p data-ke-size="size16">$$ \begin{equation} P(u, n_B | N) = P(u | n_B, N)P(n_B|N) = P(n_B | u, N)P(u|N) \tag{1} \end{equation} $$</p>
-<p data-ke-size="size16">$$ \begin{equation} P(n_B) = \sum_{u} P(u, N)P(n_B | u, N) = \sum_{u} P(u)P(n_B | u, N) \tag{2} \end{equation} $$</p>
-<p data-ke-size="size16">$$ \begin{equation} P(u | n_B, N) = \frac{P(u|N)P(n_B | u, N)}{P(n_B|N)} = \frac{P(u) \left(\begin{array}{c} N \\ n_B \end{array}\right) f_{u}^{n_B}(1-f_{u})^{N-n_B}} {\sum_{u}{P(u)P(n_B | u, N)}} \tag{3} \end{equation} $$</p>
-<p data-ke-size="size16">&bull; (Exercise 2.4) \(B\)개의 검은 공과 \(K-B\)개의 흰 공으로 구성된 하나의 항아리로부터 \(N\)번의 복원 추출을 하는 상황. 관찰자는 피관찰자가 뽑는 검은 공의 개수(\(n_B\))에 대한 확률분포를 계산하고자 함. 확률변수 \(n_B\)는 식 (4)와 같은 이항분포를 따름. 이항분포의 기대값은 이항정리에 따라 식 (5)와 같이 표현됨</p>
-<p data-ke-size="size16">$$ \begin{equation} P(n_B|p, N) = \left(\begin{array}{c} N \\ n_B \end{array}\right) p^{n_B}q^{N-n_B}, \ \ (p = \frac{B}{K}, q = (1-p)) \tag{4} \end{equation} $$</p>
-<p data-ke-size="size16">$$ \begin{equation} \sum_{n_B} n_B \cdot P(n_B|p, N) = Np \tag{5} \end{equation} $$</p>
-<p data-ke-size="size16">&bull; (Exercise 2.5) 관찰자가 (Exercise 2.4)의 데이터로부터 임의의 확률변수를 식 (6)과 같이 생성함. 확률변수 \(z\)의 기대값은 이항분포의 분산에 대한 정의를 이용하여 식 (7)과 같이 표현. (Exercise 2.4)와의 연관성을 못 찾음</p>
-<p data-ke-size="size16">$$ \begin{equation} z = \frac{(n_{B} - f_{B} N)^{2}}{N f_{B} (1 - f_{B})}, \ \ (f_{B} = B/K) \tag{6} \end{equation} $$</p>
-<p data-ke-size="size16">$$ \begin{equation} \mathsf{E}[z] = 1 - \frac{N f_{B}}{1-f_{B}}, \ \ (\mathsf{Var}(X) = \mathsf{E}[(X)^2] + (\mathsf{E}[X])^2) \tag{7} \end{equation} $$</p>
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16">
+  &bull; 관찰자는 피관찰자가 \(N\)번의 복원 추출 과정에서 항아리 \(u\)로부터
+  검은 공을 \(n_{B}\)번 뽑는 확률을 곱의 법칙을 이용하여 식 (1)과 같이 표현할 수
+  있음. \(n_B\)개의 공을 꺼낼 확률을 전확률의 법칙에 따라 식 (2)와 같이 표현할
+  수 있음. 베이즈 정리에 따라 \(N\)번의 복원 추출에서 \(n_B\)개의 검은 공을
+  꺼냈을 때 항아리가 \(u\)일 사후확률을 식 (3)과 같이 표현할 수 있음. 식
+  (3)에서의 사전확률은 \(P(u|N) = P(u)\)이며 우도는 \(P(n_B | u, N)\)
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} P(u, n_B | N) = P(u | n_B, N)P(n_B|N) = P(n_B | u,
+  N)P(u|N) \tag{1} \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} P(n_B) = \sum_{u} P(u, N)P(n_B | u, N) = \sum_{u}
+  P(u)P(n_B | u, N) \tag{2} \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} P(u | n_B, N) = \frac{P(u|N)P(n_B | u, N)}{P(n_B|N)} =
+  \frac{P(u) \left(\begin{array}{c} N \\ n_B \end{array}\right)
+  f_{u}^{n_B}(1-f_{u})^{N-n_B}} {\sum_{u}{P(u)P(n_B | u, N)}} \tag{3}
+  \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  &bull; (Exercise 2.4) \(B\)개의 검은 공과 \(K-B\)개의 흰 공으로 구성된 하나의
+  항아리로부터 \(N\)번의 복원 추출을 하는 상황. 관찰자는 피관찰자가 뽑는 검은
+  공의 개수(\(n_B\))에 대한 확률분포를 계산하고자 함. 확률변수 \(n_B\)는 식
+  (4)와 같은 이항분포를 따름. 이항분포의 기대값은 이항정리에 따라 식 (5)와 같이
+  표현됨
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} P(n_B|p, N) = \left(\begin{array}{c} N \\ n_B
+  \end{array}\right) p^{n_B}q^{N-n_B}, \ \ (p = \frac{B}{K}, q = (1-p)) \tag{4}
+  \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} \sum_{n_B} n_B \cdot P(n_B|p, N) = Np \tag{5}
+  \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  &bull; (Exercise 2.5) 관찰자가 (Exercise 2.4)의 데이터로부터 임의의 확률변수를
+  식 (6)과 같이 생성함. 확률변수 \(z\)의 기대값은 이항분포의 분산에 대한 정의를
+  이용하여 식 (7)과 같이 표현. (Exercise 2.4)와의 연관성을 못 찾음
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} z = \frac{(n_{B} - f_{B} N)^{2}}{N f_{B} (1 - f_{B})}, \ \
+  (f_{B} = B/K) \tag{6} \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathsf{E}[z] = 1 - \frac{N f_{B}}{1-f_{B}}, \ \
+  (\mathsf{Var}(X) = \mathsf{E}[(X)^2] + (\mathsf{E}[X])^2) \tag{7}
+  \end{equation} $$
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
