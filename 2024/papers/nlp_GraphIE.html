@@ -1,0 +1,39 @@
+<p data-ke-size="size16"><i>[24.03.27]</i></p>
+<p data-ke-size="size16">
+  &bull; 문장/시퀀스는 단어들의 집합. 인코더(식 (1))와 디코더(식 (3))에 RNN을
+  이용하며 그 중간에 그래프 모듈(식 (2))을 삽입
+</p>
+
+<p data-ke-size="size16">
+  &bull; 식 (1)의 \( \mathbf{x}_j^{(i)} \)는 문장 \( i \)의 단어 \( j \)의 표현
+  벡터. \( \mathsf{RNN} \) 중간의 \( \mathbf{0} \)은 초기 은닉층의 상태. 식
+  (2)에서 \( \mathbf{\alpha}_{i}^{(\ell)} = \mathbf{W}_{v}^{(\ell)}
+  \mathbf{g}_{i}^{(\ell - 1)} \). \( \mathbf{g}_{i}^{(0)} = \mathsf{Enc}(s_{i})
+  \). \( \mathbf{\beta}_{i}^{(\ell)} = \frac{1}{d(v_{i})}
+  \mathbf{W}_{e}^{(\ell)} ( \sum_{e_{i, j} \in E} \mathbf{g}_{j}^{(\ell - 1)} )
+  \)
+</p>
+
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathbf{h}_{1:k}^{(i)} = \mathsf{RNN} (
+  \mathbf{x}_{1:k}^{(i)}; \mathbf{0}; \Theta_{\mathsf{enc}} ) \tag{1}
+  \end{equation} $$
+</p>
+
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathbf{g}_{(i)}^{(\ell)} = \sigma (
+  \mathbf{\alpha}_{i}^{(\ell)} + \mathbf{\beta}_{i}^{(\ell)} + b^{(\ell)} )
+  \tag{2} \end{equation} $$
+</p>
+
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathbf{y}_{i}^{*} = \arg_{\mathbf{y} \in \mathbf{Y}_{k}}
+  \max P ( \mathbf{y} | \mathbf{z}_{1:k}^{(i)} ; \Theta_{\mathsf{crf}} ) \tag{3}
+  \end{equation} $$
+</p>
+
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
