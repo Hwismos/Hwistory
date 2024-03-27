@@ -90,7 +90,8 @@
   있음. \(n_B\)개의 공을 꺼낼 확률을 전확률의 법칙에 따라 식 (2)와 같이 표현할
   수 있음. 베이즈 정리에 따라 \(N\)번의 복원 추출에서 \(n_B\)개의 검은 공을
   꺼냈을 때 항아리가 \(u\)일 사후확률을 식 (3)과 같이 표현할 수 있음. 식
-  (3)에서의 사전확률은 \(P(u|N) = P(u)\)이며 우도는 \(P(n_B | u, N)\)
+  (3)에서의 사전확률은 \(P(u|N) = P(u)\)이며 고정된 \(n_{B}\)에 대한 \(u\)의
+  우도는 \(P(n_B | u, N)\)
 </p>
 <p data-ke-size="size16">
   $$ \begin{equation} P(u, n_B | N) = P(u | n_B, N)P(n_B|N) = P(n_B | u,
@@ -135,6 +136,17 @@
   $$ \begin{equation} \mathsf{E}[z] = 1 - \frac{N f_{B}}{1-f_{B}}, \ \
   (\mathsf{Var}(X) = \mathsf{E}[(X)^2] + (\mathsf{E}[X])^2) \tag{7}
   \end{equation} $$
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
+<p data-ke-size="size16"><i>[24.03.27]</i></p>
+<p data-ke-size="size16">
+  &bull; forward probability(전확률)는 관찰한 결과에 기반한 통계. inverse
+  probability(역확률)는 관찰하지 않은 대상에 대한 확률. 역확률 계산을 위해
+  베이지안 정리를 이용
 </p>
 <hr
   contenteditable="false"
