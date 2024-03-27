@@ -144,9 +144,26 @@
 />
 <p data-ke-size="size16"><i>[24.03.27]</i></p>
 <p data-ke-size="size16">
-  &bull; forward probability(전확률)는 관찰한 결과에 기반한 통계. inverse
-  probability(역확률)는 관찰하지 않은 대상에 대한 확률. 역확률 계산을 위해
-  베이지안 정리를 이용
+  &bull; \(n\)개 중 \(r\)개를 뽑아(조합) 순서대로 나열(\(r!\))하는 순열의 경우의
+  수는 \(\frac{n!}{(n-r)!}\). 조건부 확률을 이용하여 곱의 법칙을 유도. 곱의
+  법칙과 주변(marginal) 확률(\(P(x) = \sum_{y \in \mathcal{A}_{Y}} P(x, y)\))을
+  이용해서 합의 법칙 유도
+</p>
+<p data-ke-size="size16">
+  &bull; (Exercise 2.2) 확률변수 \(X\)와 \(Y\)가 독립이라면 \(P(y|x) = p(y)\)가
+  성립. 하지만 첫 번째 알파벳을 알 때 두 번째 알파벳에 대한 확률분포가 달라지기
+  때문에 두 확률변수는 종속. (Exercise 2.4) 기대값과 분산 각각은, \(q =
+  (1-p)\)인 상황에서, 이항정리 \((p+q)^{n}=1\)을 이용하여 계산
+</p>
+<p data-ke-size="size16">
+  &bull; 한 결과값의 정보량 \(h(x)\)는 \( \log_{2} \frac{1}{P(x)} \). 확률변수의
+  엔트로피(불확실성) \(H(X)\)는 \( \sum_{x \in A_{X}} P(x) \log_{2}
+  \frac{1}{P(x)}\). 정보량과 엔트로피 모두 단위는 비트(bit). 식 (1)은 (Exercise
+  2.29)의 동전을 던지는 수(확률변수)에 대한 엔트로피
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} H(X) = \sum_{x \in A_{X}} f^{1}(1-f)^{x-1} \log_{2}
+  \frac{1}{f^{1}(1-f)^{x-1}} \tag{1} \end{equation} $$
 </p>
 <hr
   contenteditable="false"
