@@ -1,0 +1,82 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+<p data-ke-size="size18">
+  <b>Simple and Asymmetric Graph Contrastive Learning without Augmentations</b>
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
+<p data-ke-size="size16"><i>[24.03.13]</i></p>
+<p data-ke-size="size16">
+  &bull; HTG의 정점들은 (1) 동일한 클래스에 속한 정점에 대하여 유사한 1-hop
+  구조(context)를 갖고, (2) 2-hop 거리의 이웃 정점과는 유사한 특징(semantic)을
+  갖는 성질(monophily)이 있음. 따라서 한 정점에 대한 표현에, 1-hop 정점들과의
+  구조 정보와 2-hop 정점들의 특징 정보가 담길 수 있도록 인코더를 설계함
+</p>
+<p data-ke-size="size16">
+  &bull; \(g_{\phi}\)는 정점 \(v\)의 표현(\(\mathbf{v}\))으로부터 \(v\)의 이웃
+  정점인 \(u\)의 표현(\(\mathbf{u}\))을 복원하는 예측기(projection). 예측기가
+  항등 함수(identity function)가 되는 것을 방지하기 위해 \(\mathbf{v}\)와
+  \(\mathbf{u}\)에 각각의 인코더(\(f_{\theta}\), \(f_{\xi}\))를 적용. 단
+  파라미터 \(\xi\)는 \(\theta\)에 기반하여 간접적으로 갱신됨. 정점 표현의
+  차별성을 더욱 보장하기 위해 \(f_\theta\)를 이용해 생성한 k개의 랜덤한 음성
+  샘플의 표현(\(\mathbf{v}\_\))과 \(v\)의 표현(\(\mathbf{v}\))의 거리가 최대가
+  되도록 규제(regularization)함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
+<p data-ke-size="size16"><i>[24.03.14]</i></p>
+<p data-ke-size="size16">
+  &bull; \(f_{\theta}\)는 graphconv[1, 2]로 \(f_{\xi}\)는 requires_grad를
+  False로 설정한 target_graphconv[1, 2]로 구현
+</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><i>[24.03.21]</i></p>
+<p data-ke-size="size16">
+  &bull; 정점 \(v\)로부터 표현 \(\mathbf{v}\)(v_emb)와
+  \(\mathbf{p}\)(projected_emb)를 생성. \(v\)의 이웃 정점인 \(u\)로부터
+  \(\mathbf{u}\)(u_emb)를 생성. \(\mathbf{p}\)와 \(\mathbf{u}\)가 유사해지고,
+  \(\mathbf{v}\)와 \(v\)의 음성 샘플(\(v\_\))의 표현인 \(\mathbf{v\_}\)가
+  달라지도록 손실 함수를 설계함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
+<p data-ke-size="size16"><i>[24.03.26]</i></p>
+<p data-ke-size="size16">
+  &bull; 한 정점으로 세 가지 표현 벡터(\(\mathbf{v}, \mathbf{u}, \mathbf{p}\))를
+  생성. \(\mathbf{v}\) 벡터를 본인을 포함한 모든 벡터들과 달리 지도록 강제함.
+  이를 통해 oversmoothing 예방. 이웃한 정점들에 대한 \(\mathbf{u}\) 벡터를
+  \(\mathbf{p}\) 벡터와 유사해지도록 강제함으로써 한 이웃 정점을 공유하는 임의의
+  두 정점의 \(\mathbf{p}\) 벡터가 비슷해지도록 만듦. 각 클래스에 속하는 정점들의
+  1-hop 패턴이 유사하다면 동일한 클래스에 속하는 정점들의 \(\mathbf{p}\) 벡터
+  역시 유사한 방향으로 학습됨
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
+<p data-ke-size="size16"><i>[24.04.01]</i></p>
+<p data-ke-size="size16">
+  &bull; 인트로의 두 가지 핵심 내용. (1) 이웃 정점들을 양성 샘플로 취급하고
+  이웃하지 않은 정점들을 음성 샘플로 취급하여 대조 학습을 수행하던 방법은 동질성
+  가정을 전제로 함. (2) 각각의 증강된 뷰 상에서 동일한 정점만을 양성 샘플로
+  취급하고 나머지 정점들은 음성 샘플로 취급하여 대조 학습을 수행하던 방법 역시
+  암묵적으로 동질성에 의존함. 따라서 (1)과 (2) 모두 heterophilous 그래프에
+  부적합함
+</p>
+<hr
+  contenteditable="false"
+  data-ke-type="horizontalRule"
+  data-ke-style="style5"
+/>
