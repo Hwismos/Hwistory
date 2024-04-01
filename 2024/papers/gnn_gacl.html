@@ -75,6 +75,15 @@
   암묵적으로 동질성에 의존함. 따라서 (1)과 (2) 모두 heterophilous 그래프에
   부적합함
 </p>
+<p data-ke-size="size16">
+  &bull; CCGC의 \(\tilde{\mathbf{x}}\) 벡터는 주변 이웃 벡터들의 병합된 정보를
+  갖고 있음. GACL의 \(\mathbf{p}\) 벡터는 1-hop contextual 정보와 2-hop
+  monophily 정보를 갖고 있음. 더 유용한 \(\mathbf{p}\) 벡터를 unshared 샴
+  인코더에 주입하고 클러스터링을 수행한다면 homophilous 그래프 뿐 아니라
+  heterophilous 그래프에 대한 클러스터링도 가능함. 단 GREET과 같이 각각의 모듈이
+  별개로 동작해야 함. 또한 CCGC 모듈로 인해 GACL 모듈에서 얻은 정보가 손실될
+  수도 있기 때문에 적절한 규제가 필요할 수 있음 (반대 상황도 가능)
+</p>
 <hr
   contenteditable="false"
   data-ke-type="horizontalRule"
