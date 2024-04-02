@@ -18,7 +18,11 @@
   &bull; 문서(document) 내 단어 간 관계 추출의 경우 다음과 같은 어려움이 있음
   (1) 단어(엔티티)에 대한 언급이 자주 발생하는 점에 반해 관계 추론에 이용되는
   실질적인 언급은 적다는 점. (2) 동일한 단어 쌍 간에 다중 관계가 적용된다는 점.
-  (3) 관계 분포가 long-tail 분포를 따른다는 점
+  (3) 관계 분포가 long-tail 분포를 따른다는 점. 토큰은 최소 문법 구성 단위.
+  엔티티는 최소 의미 구성 단위
+</p>
+<p data-ke-size="size16">
+  &bull; 토큰은 최소 문법 구성 단위. 엔티티는 최소 의미 구성 단위
 </p>
 <hr
   contenteditable="false"
@@ -52,10 +56,11 @@
 </p>
 <p data-ke-size="size16">
   &bull; <u>DocRED</u>(CDR/CHR) 데이터셋의 F1 점수가 기존 모델 대비
-  <u>1.19%</u>(2.4%/2.8%) 향상된 것을 근거로 성능정 우수성을 주장함. 순서 정보
+  <u>1.19%</u>(2.4%/2.8%) 향상된 것을 근거로 성능적 우수성을 주장함. 순서 정보
   제거 시 성능이 2.39% 하락함. 따라서 순서 정보를 적극적으로 학습할 수 있는
   그래프 신경망(ex.
-  <i>Sequential Recommendation with Graph Neural Networks</i>)을 이용해보고자 함
+  <i>Sequential Recommendation with Graph Neural Networks, Directed Graph</i>)을
+  이용해보고자 함
 </p>
 <hr
   contenteditable="false"
