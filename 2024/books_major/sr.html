@@ -113,13 +113,25 @@
   data-ke-type="horizontalRule"
   data-ke-style="style5"
 />
-<p data-ke-size="size16"><i>[24.04.03]</i></p>
+<p data-ke-size="size16"><i>[24.04.03]</i> (1)</p>
 <p data-ke-size="size16">
-  &bull; 해석하기 위한 분해. 선형 시불변 시스템(\(y(n) = S\{x(n)\}\))을,
-  선형성과 시불변성을 이용하여, convolution sum(\(x(n)*h(n)\))으로 표현. 이를
-  통해 출력 신호에 대한 입력 신호와 임펄스 응답의 관계를 해석할 수 있음.
-  삼각함수와 지수함수 사이의 관계를 나타내는 오일러 공식을 이용하여 코사인
-  신호를 주파수 변수 \(F\)에 대한 신호(스펙트럼)로 표현할 수 있음
+  &bull; 선형 시불변 시스템(\(y(n) = S\{x(n)\}\))을, 선형성과 시불변성을
+  이용하여, convolution sum(\(x(n)*h(n)\))으로 표현. 이를 통해 출력 신호를 입력
+  신호와 임펄스 응답으로 <b>분해</b>할 수 있음
+</p>
+<p data-ke-size="size16">
+  &bull; 오일러 공식을 이용하여 삼각함수(주기함수)를 식 (1)과 같은 지수함수로
+  변형할 수 있음. 식 (1)을 이용하여 시간 영역 신호를 주파수 영역 신호인
+  스펙트럼으로 변환할 수 있음. 스펙트럼의 주파수가 \(\pm F_{0}\)인 지점에서의
+  물리량(\(X(F)\))은 \( \frac{A}{2} e^{\pm j \phi} \). 기본 주파수를 갖는 임의의
+  신호를 하모닉 주파수(\(k F_{0}\))를 갖는 연속 주기 신호로 표현하기 위해 연속
+  시간 푸리에 급수(<b>CTFS</b>)를 이용하여 주파수가 \(k F_{0}\)일 때 \(c_{k}\)의
+  물리량을 갖는 스펙트럼으로 표현
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} x(t) = A \cos (2 \pi F_{0} t + \phi) = \frac{A}{2} e^{j
+  \phi} e^{j 2 \pi F_{0} t} + \frac{A}{2} e^{-j \phi} e^{-j 2 \pi F_{0} t}
+  \tag{1} \end{equation} $$
 </p>
 <hr
   contenteditable="false"
