@@ -15,15 +15,22 @@
 </style>
 <p data-ke-size="size16"><i>[24.04.06]</i></p>
 <p data-ke-size="size16">
-  &bull; <b>ALT</b>: <code>augmenter</code>를 이용해 \(\mathbf{W}\)를
+  &bull; [<b>ALT</b>] <code>augmenter</code>를 이용해 \(\mathbf{W}\)를
   <code>edge_weight</code>에 할당하고 PyG의 데이터셋 객체인 <code>data</code>를
   <code>model</code>에 전달
 </p>
 <p data-ke-size="size16">
-  &bull; <b>DGCN</b>: \(\mathbf{H}\)와 \(\mathbf{S}\)를 생성하는 각각의
+  &bull; [<b>DGCN</b>] \(\mathbf{H}\)와 \(\mathbf{S}\)를 생성하는 각각의
   스크립트를 임포트하여 사용
 </p>
-<p data-ke-size="size16">&bull; <b>GACL</b>: .</p>
+<p data-ke-size="size16">
+  &bull; [<b>GACL</b>] <code>forward_encoder</code> 메소드로 \(\mathbf{v}\),
+  \(\mathbf{u}\) 그리고 \(\mathbf{p}\) 모두 생성. 이웃한 정점들의 \(\mathbf{u}\)
+  벡터들을 양성 샘플로 취급하고 본인을 포함한 모든 정점들의 \(\mathbf{v}\)
+  벡터를 음성 샘플로 취급하여 <code>sampled_embedding_list</code>와
+  <code>sampled_embedding_neg_list</code> 생성. 대조학습을 통해 \(\mathbf{u}\)의
+  신호를 \(\mathbf{p}\)가 예측할 수 있도록 레이어 갱신
+</p>
 <hr
   contenteditable="false"
   data-ke-type="horizontalRule"
