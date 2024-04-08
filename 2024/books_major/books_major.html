@@ -1,115 +1,78 @@
 <p>
   [##_Image|kage@ttTvw/btsFEvEZRBQ/pwtee2KqY4Ys1uZpkdcQPK/img.png|CDM|1.3|{"originWidth":500,"originHeight":610,"style":"alignCenter","caption":"사진:
-  Unsplash 의 Annie
-  Spratt","filename":"edited_annie-spratt-gl7joOaABlI-unsplash.jpg"}_##]
+  Unsplash 의 Annie Spratt","filename":"edited_annie-spratt-gl7joOaABlI-unsplash.jpg"}_##]
 </p>
 <p data-ke-size="size18"><b>그래프 신경망 입문 (즈위안 리우 외)</b></p>
 <p data-ke-size="size16"><i>[24.03.04]</i></p>
 <p data-ke-size="size16">
-  &bull; 합성곱 신경망(CNN)은 주변 정보를 여러 단계를 거쳐 학습하고
-  재구성함으로써 딥러닝의 혁명을 가져왔고 GNN 역시 CNN에 많이 의존하고 있음.
-  이를 직접적으로 GNN에 응용한 방법이 스펙트럼 방법(spectral approache)임.
-  하지만 스펙트럼 방법은 특정 그래프 구조에 의존함으로써 새로운 그래프 구조에
-  바로 적용하지 못한다는 한계점을 가짐. 이를 해결하기 위해 제안된 방법이 공간
-  방법(spatial approache)이며 공간적으로 가까운 이웃 노드들에만 적용하는 합성곱
+  &bull; 합성곱 신경망(CNN)은 주변 정보를 여러 단계를 거쳐 학습하고 재구성함으로써 딥러닝의 혁명을 가져왔고 GNN 역시 CNN에 많이 의존하고 있음. 이를
+  직접적으로 GNN에 응용한 방법이 스펙트럼 방법(spectral approache)임. 하지만 스펙트럼 방법은 특정 그래프 구조에 의존함으로써 새로운 그래프 구조에 바로
+  적용하지 못한다는 한계점을 가짐. 이를 해결하기 위해 제안된 방법이 공간 방법(spatial approache)이며 공간적으로 가까운 이웃 노드들에만 적용하는 합성곱
   연산을 이용함으로써 기존 스펙트럼 방식의 문제점을 해결함
 </p>
-<hr
-  contenteditable="false"
-  data-ke-type="horizontalRule"
-  data-ke-style="style1"
-/>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
 <p data-ke-size="size18"><b>Graph Representation Learning (WL hamilton)</b></p>
 <p data-ke-size="size16"><i>[24.03.10]</i></p>
-<p data-ke-size="size16">
-  &bull; 관계 데이터를 이용한 추론 능력(relational inductive biases) 향상은
-  그래프 딥러닝 성능 향상을 위한 핵심 과제
-</p>
+<p data-ke-size="size16">&bull; 관계 데이터를 이용한 추론 능력(relational inductive biases) 향상은 그래프 딥러닝 성능 향상을 위한 핵심 과제</p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.03.11]</i></p>
 <p data-ke-size="size16">
-  &bull; WL(Weisfieler-Lehman) 방법을 이용한 그래프 간 동질성(isomorphism) 평가.
-  DeepWalk와 node2vec 모두 정점에 대한 임베딩 룩업 테이블(shallow embedding)을
-  내적을 이용해 학습함
+  &bull; WL(Weisfieler-Lehman) 방법을 이용한 그래프 간 동질성(isomorphism) 평가. DeepWalk와 node2vec 모두 정점에 대한 임베딩 룩업 테이블(shallow
+  embedding)을 내적을 이용해 학습함
 </p>
-<hr
-  contenteditable="false"
-  data-ke-type="horizontalRule"
-  data-ke-style="style5"
-/>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><i>[24.04.08]</i></p>
+<p data-ke-size="size16">
+  &bull; 라플라시안 행렬은 그래프 데이터를 표현하는 하나의 방법이며 인접한 정점 사이의 <u>유사성</u>을 측정할 수 있음. 푸리에 변환을 통해 입력 신호를
+  사인파와 같은 주기 신호의 가중합으로 <u>분해</u>할 수 있음
+</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 <p data-ke-size="size18"><b>혼자 공부하는 컴퓨터구조 + 운영체제 (강민철)</b></p>
 <p data-ke-size="size16"><i>[24.03.07]</i></p>
 <p data-ke-size="size16">
-  &bull; 컴퓨터 구조를 알면 데이터와 명령어가 CPU, 메모리, 보조기억장치,
-  입출력장치 사이에서 어떻게 읽고 쓰여지는지를 이해할 수 있음. 운영체제를 알면
+  &bull; 컴퓨터 구조를 알면 데이터와 명령어가 CPU, 메모리, 보조기억장치, 입출력장치 사이에서 어떻게 읽고 쓰여지는지를 이해할 수 있음. 운영체제를 알면
   프로세스와 자원 사이의 관계를 이해할 수 있음
 </p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.03.08]</i></p>
 <p data-ke-size="size16">
-  &bull; 어셈블리어는 연산 필드(operation)와 오퍼랜드 필드(operand)로 구분되며
-  오퍼랜드 필드에는 표현할 데이터의 범위를 늘리고자 데이터가 저장된 주소값을
-  명시함
+  &bull; 어셈블리어는 연산 필드(operation)와 오퍼랜드 필드(operand)로 구분되며 오퍼랜드 필드에는 표현할 데이터의 범위를 늘리고자 데이터가 저장된
+  주소값을 명시함
 </p>
-<hr
-  contenteditable="false"
-  data-ke-type="horizontalRule"
-  data-ke-style="style5"
-/>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 <p data-ke-size="size18"><b>통계학을 위한 선형대수 (박흥선)</b></p>
 <p data-ke-size="size16"><i>[24.03.09]</i></p>
 <p data-ke-size="size16">&bull; 데이터가 행렬과 벡터 형태로 저장되고 연산됨</p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.03.26]</i></p>
 <p data-ke-size="size16">
-  &bull; 벡터 \(\mathbf{x} \in \mathbb{R}^{n}\)로 구성된 집합이 특정 조건을
-  만족하면 해당 집합은 벡터공간이 됨. 벡터들의 선형결합을
-  영벡터(\(\mathbf{0}\))로 만드는 람다 벡터(\( [\lambda_{1}, \lambda_{2}, \cdots
-  , \lambda_{n}]^{T} \))가 \(\mathbf{0}\) 뿐일 때, 대상 벡터들은 선형독립.
-  스팬(span)은 선형결합의 집합. 기저는 벡터공간을 구성하는 기본 벡터(들). 해당
-  벡터들의 개수가 차원
+  &bull; 벡터 \(\mathbf{x} \in \mathbb{R}^{n}\)로 구성된 집합이 특정 조건을 만족하면 해당 집합은 벡터공간이 됨. 벡터들의 선형결합을
+  영벡터(\(\mathbf{0}\))로 만드는 람다 벡터(\( [\lambda_{1}, \lambda_{2}, \cdots , \lambda_{n}]^{T} \))가 \(\mathbf{0}\) 뿐일 때, 대상 벡터들은
+  선형독립. 스팬(span)은 선형결합의 집합. 기저는 벡터공간을 구성하는 기본 벡터(들). 해당 벡터들의 개수가 차원
 </p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.03.28]</i></p>
 <p data-ke-size="size16">
-  &bull; 선형함수란 <b>가법성</b>: \( f( x_{1} + x_{2} ) = f(x_{1}) + f(x_{2})
-  \)과 <b>동질성</b>: \( f( a x ) = a f(x) \)를 모두 만족하는 종류의 함수
+  &bull; 선형함수란 <b>가법성</b>: \( f( x_{1} + x_{2} ) = f(x_{1}) + f(x_{2}) \)과 <b>동질성</b>: \( f( a x ) = a f(x) \)를 모두 만족하는 종류의 함수
 </p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.03.30]</i></p>
-<p data-ke-size="size16">
-  &bull; 선형결합은 여러 벡터들을 각각 상수배한 뒤 더하는 연산
-</p>
-<p data-ke-size="size16">
-  &bull; 고유벡터란 \( \mathbf{A} \mathbf{v} = \lambda \mathbf{v} \)를 만족하는
-  벡터 \(\mathbf{v}\)
-</p>
+<p data-ke-size="size16">&bull; 선형결합은 여러 벡터들을 각각 상수배한 뒤 더하는 연산</p>
+<p data-ke-size="size16">&bull; 고유벡터란 \( \mathbf{A} \mathbf{v} = \lambda \mathbf{v} \)를 만족하는 벡터 \(\mathbf{v}\)</p>
 <p data-ke-size="size16">&nbsp;</p>
 <p data-ke-size="size16"><i>[24.04.01]</i></p>
 <p data-ke-size="size16">
-  &bull; 열공간 \(C (\mathbf{A}) \)는 \( \{ \mathbf{w} | \mathbf{w} =
-  \lambda_{1} \mathbf{a}_{1\mathbf{C}} + \cdots + \lambda_{n}
-  \mathbf{a}_{n\mathbf{C}} \} \). 영공간 \(N (\mathbf{A}) \)는 \( \{ \mathbf{x}
-  | \mathbf{A} \mathbf{x} = \mathbf{0} \} \)
+  &bull; 열공간 \(C (\mathbf{A}) \)는 \( \{ \mathbf{w} | \mathbf{w} = \lambda_{1} \mathbf{a}_{1\mathbf{C}} + \cdots + \lambda_{n}
+  \mathbf{a}_{n\mathbf{C}} \} \). 영공간 \(N (\mathbf{A}) \)는 \( \{ \mathbf{x} | \mathbf{A} \mathbf{x} = \mathbf{0} \} \)
 </p>
 <p data-ke-size="size16">
-  &bull; \( \mathsf{Rank} (\mathbf{A}) = \mathsf{dim} (C (\mathbf{A})) =
-  \mathsf{dim} (R(\mathbf{A})) \). 행렬의 계수는 기본행연산의 결과로 생성된
+  &bull; \( \mathsf{Rank} (\mathbf{A}) = \mathsf{dim} (C (\mathbf{A})) = \mathsf{dim} (R(\mathbf{A})) \). 행렬의 계수는 기본행연산의 결과로 생성된
   행공간 기저의 벡터 개수
 </p>
-<hr
-  contenteditable="false"
-  data-ke-type="horizontalRule"
-  data-ke-style="style5"
-/>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 <p data-ke-size="size18"><b>CUDA 기반 GPU 병렬 처리 프로그래밍 (김덕수)</b></p>
 <p data-ke-size="size16"><i>[24.03.21]</i></p>
 <p data-ke-size="size16">
-  &bull; CUDA 프로그램은 호스트 코드(C, Python)와 nvcc 컴파일러로 컴파일되는
-  디바이스 코드로 구성됨. C언어만 컴파일되고 GPU 프로그래밍은 안됨
+  &bull; CUDA 프로그램은 호스트 코드(C, Python)와 nvcc 컴파일러로 컴파일되는 디바이스 코드로 구성됨. C언어만 컴파일되고 GPU 프로그래밍은 안됨
 </p>
-<hr
-  contenteditable="false"
-  data-ke-type="horizontalRule"
-  data-ke-style="style5"
-/>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
