@@ -1,0 +1,28 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+<p data-ke-size="size18"><b>2024_0412</b></p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16">
+  &bull; GACL의 저자(<b>Xiao et al.</b>)는 정점의 identity representation으로써의 역할과 context representation으로써의 역할을 <u>분리</u>함. identity representation은 일반 GCN 레이어를 거쳐 생성된
+  벡터이고 context representation은 prediction layer를 거쳐서 생성된 벡터. MUSE의 저자(<b>Yuan et al.</b>)는 각 정점의 이웃과의 다양성 분포를 고려하여 정점의 ego representation과 contextual
+  representation을 <u>결합</u>함(fusing). contextual representation은 이웃 정점들의 벡터들을 종합한 벡터. GREET의 저자(<b>Liu et al.</b>)는 간선의 homophily 정도를 유추하기 위해 raw feature와
+  structure 정보를 이용함. 두 개의 인공 그래프에 기반하여 low-pass 필터와 high-pass 필터를 만들고 이를 이용하여 생성한 두 개의 뷰를 대조함
+</p>
+<p data-ke-size="size16">
+  &bull; GACL의 저자는 homophilous graph(Cora)와 heterophilous graph(Squirrel) 각각에 대하여 <u>[그림 1]</u>과 같이 identity representation(\(\mathbf{v}\))과 context representation(\(\mathbf{p}\))이
+  Cora에서는 유사해졌고 Squirrel에서는 유사해지지 않았음을 실험적으로 보임. 이 결과를 토대로 GACL이 heterophilous graph에서는 \(\mathbf{v}\)와 \(\mathbf{p}\)를 분리하는 방향으로 학습하고 있다고
+  주장함. 또한 저자는 Cora와 Squirrel에 대해서 <u>[그림 2]</u>와 같이 one-hop, two-hop, random pair 사이의 유사성을 비교한 결과를 제시함. 저자는 이를 통해 GACL이 homophilous graph와 heterophilous
+  graph 각각에서 추출되어야 하는 정보를 분별할 수 있다고 주장함
+</p>
+<p data-ke-size="size16">
+  &bull; MUSE의 저자는 MUSE가 heterophilous graph에 적합한 모델로 homophilous graph에서는 성능의 감소가 발생한다는 점을 인정함. 하지만 [그림 3]과 같이 heterophilous graph마다 semantic 정보와 context
+  정보의 중요 정도가 다르고 이 정보들을 정점별로 맞춤 결합을 할 수 있도록 MUSE를 설계했기 때문에 heterophilous graph에 대해서는 안정적인 성능을 보였다고 주장함
+</p>
+<p>&nbsp;</p>
+<p>[##_Image|kage@ybhEl/btsGAyndJFY/xe2Iz8UidxQnejbLpJHYw0/img.png|CDM|1.3| {"originWidth":648,"originHeight":275,"style":"alignCenter","caption":"그림 1"}_##]</p>
+<p>[##_Image|kage@ovQMl/btsGzEBqRnH/GE2iGn2kHPH7846bZeKW3k/img.png|CDM|1.3| {"originWidth":575,"originHeight":256,"style":"alignCenter","caption":"그림 2"}_##]</p>
+<p>[##_Image|kage@AxojW/btsGyfQcHGd/7tnyAjptIUn9Qv3mtE4CgK/img.png|CDM|1.3|{"originWidth":1158,"originHeight":394,"style":"alignCenter","caption":"그림 3"}_##]</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
