@@ -1,0 +1,48 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+<p data-ke-size="size18">
+  <b>Hard Sample Aware Network for Contrastive Deep Graph Clustering (Liu, Yue, et al.)</b>
+</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.03.11]</i></p>
+<p data-ke-size="size16">&bull; 그래프 클러스터링과 그래프 대조 학습. hard positive/negative samples. 코드 있음</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.03.25]</i></p>
+<p data-ke-size="size16">
+  &bull; 한 정점에 대한 하드 샘플은 낮은 유사도를 갖는 양성 샘플과 높은 유사도를 갖는 음성 샘플. \(i\)-sample은 정점 \(i\)를 의미. 2개의 attribute 인코더와 2개의 structure encoder를 이용하여 총 4개의
+  서로 다른 뷰(표현 행렬)를 생성. attribute-structure 유사도 함수 \(S(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}})\)를 식 (1)과 같이 정의. \(\mathbf{Z}\)와 \(\mathbf{E}\)는 각각 attribute 표현
+  행렬과 structure 표현 행렬
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} S(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}}) = \alpha \cdot ( \mathbf{Z}_{i}^{\mathsf{view}_j} )^T \cdot \mathbf{Z}_{k}^{\mathsf{view}_\ell} + (1 - \alpha) \cdot (
+  \mathbf{E}_{i}^{\mathsf{view}_j} )^T \cdot \mathbf{E}_{k}^{\mathsf{view}_\ell} \tag{1} \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  &bull; \(\mathbf{P} \in \mathbb{R}^{N}\)는 정점별 슈도 레이블 벡터. \(\mathbf{H} \in \mathbb{R}^{M}\)는 \(M\)개의 높은 신뢰도를 갖는 슈도 레이블 벡터. \(\mathbf{Q} \in \mathbb{R}^{N \times N}\)의
+  원소는 샘플 \(i\)와 \(j\)의 슈도 레이블이 갖다면 1, 아니면 0. 샘플의 가치 조정 함수 \(\mathcal{M}(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}})\)을 식 (2)와 같이 정의
+</p>
+<p data-ke-size="size16">
+  $$ \mathcal{M}(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}}) = \left\{ \begin{array}{rcl} 1 &amp; \mbox{for} &amp; (i, j \in \mathbf{H}) \\ | \mathbf{Q}_{i, k} - \mathsf{Norm} (
+  S(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}}) ) | &amp; \mbox{for} &amp; (i, j \in \mathbf{H}) \tag{2} \end{array}\right. $$
+</p>
+<p data-ke-size="size16">
+  &bull; 최종 손실은 서로 다른 뷰 상 동일한 샘플에 대하여 \(\mathcal{M}(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}})\) 함수와 \(S(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}})\) 함수 값이
+  커지는 방향으로 식 (3)과 같이 설계
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathcal{L} (i^{\mathsf{view}_{j}}) \varpropto - \log [ \mathcal{M}(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}}) \cdot S(i^{\mathsf{view}_{j}}, k^{\mathsf{view}_{\ell}}) ]
+  \tag{3} \end{equation} $$
+</p>
+<p>&nbsp;</p>
+<p>[##_Image|kage@oiWIU/btsGp1q3EmB/qpjSzT9T81h6vnlXjVVRSK/img.png|CDM|1.3|{"originWidth":2488,"originHeight":1128,"style":"alignCenter"}_##]</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.04.06]</i></p>
+<p data-ke-size="size16">
+  &bull; hardness는 샘플의 판별에서의 <u>어려움</u>과 훈련에서의 <u>중요성</u>을 판단하는 척도. 같은 슈도 레이블에 속하며 낮은 유사도를 갖는 샘플과 다른 슈도 레이블에 속하며 높은 유사도를 갖는 샘플을
+  하드 샘플로 취급하여 파라미터 조정에 대한 높은 가중치를 할당
+</p>
+<p>&nbsp;</p>
+<p>[##_Image|kage@sthjb/btsGpMns2Up/N2B17WlRd1PPpzlME8pTck/img.png|CDM|1.3|{"originWidth":1338,"originHeight":536,"style":"alignCenter"}_##]</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />

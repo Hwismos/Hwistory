@@ -1,0 +1,50 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+<p data-ke-size="size18">
+  <b>Cluster-guided Contrastive Graph Clustering Network (Yang, Xihong, et al.)</b>
+</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.03.11]</i></p>
+<p data-ke-size="size16">
+  &bull; 파라미터를 공유하지 않는 두 인코딩의 결과로부터 클러스터링을 수행하고, confidence score를 계산하여 high confidence 노드간의 거리는 줄이고 클러스터 사이의 거리는 늘리는 방향으로 파라미터들을
+  조정함. 코드 있음
+</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.03.24]</i></p>
+<p data-ke-size="size16">
+  &bull; 파라미터를 공유하지 않는 두 인코더를 통해 식 (1)과 같은 두 개의 표현 행렬을 생성. 식 (2)를 통해 생성한 결합 표현 행렬에 K-means 알고리즘을 적용하여 정점 \(v\)에 대한 신뢰(confidence)
+  점수(\(\mathbf{CONF}_{v}\))를 계산. 각 표현 행렬로부터 식 (3)과 같이 \(h\)개의 상위 신뢰 점수 인덱싱을 적용하여 일부 표현 추출. 두 개의 상위 신뢰 표현 행렬을 K개의 군집(\(
+  \mathbf{B}_{p}^{\mathsf{view}_1}, \mathbf{B}_{q}^{\mathsf{view}_2} \))으로 분류(\(p, \ \ q = 1, 2, \dots , K\)). 식 (5)와 같이 각 클러스터별 중심 표현 벡터를 계산
+</p>
+<p data-ke-size="size16">
+  &bull; 손실은 \(\mathcal{L} = \mathcal{L}_{pos} + \alpha \mathcal{L}_{neg}\)로 계산. \(\mathcal{L}_{pos}\)는 각각의 인코더로부터 생성된 각각의 클러스터 상에서 동일한 클러스터에 속하는 상위 표현
+  벡터들이 유사해지도록 강제함. \(\mathcal{L}_{neg}\)는 각각의 인코더로부터 생성되어 각각의 클러스터의 중심 표현 벡터들이 멀어지도록 강제함
+</p>
+<p data-ke-size="size16">$$ \begin{equation} \mathbf{E}^{\mathsf{view}_{1}}, \ \ \mathbf{E}^{\mathsf{view}_{2}} \tag{1} \end{equation} $$</p>
+<p data-ke-size="size16">$$ \begin{equation} \mathbf{E} = \frac{1}{2}(\mathbf{E}^{\mathsf{view}_{1}} + \mathbf{E}^{\mathsf{view}_{2}}) \tag{2} \end{equation} $$</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathbf{H}^{\mathsf{view}_{1}} = \mathbf{E}^{\mathsf{view}_{1}}_{[h, :]}, \ \ \mathbf{H}^{\mathsf{view}_{2}} = \mathbf{E}^{\mathsf{view}_{2}}_{[h, :]} \ \
+  (\mathbf{H}^{\mathsf{view}} \in \mathbb{R}^{h \times \mathsf{emb \ \ size}}) \tag{3} \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathbf{B}^{\mathsf{view}_{1}}_{p}, \ \ \mathbf{B}^{\mathsf{view}_{2}}_{q} \ \ (\mathbf{B} \in \mathbb{R}^{n_{k} \times \mathsf{emb \ \ size}}) \tag{4} \end{equation} $$
+</p>
+<p data-ke-size="size16">
+  $$ \begin{equation} \mathbf{CEN}_{p}^{\mathsf{view}_1} = \mathsf{avg} (\mathbf{B}_{p}^{\mathsf{view}_{1}}), \ \ \mathbf{CEN}_{q}^{\mathsf{view}_2} = \mathsf{avg} (\mathbf{B}_{q}^{\mathsf{view}_{2}})
+  \ \ (\mathbf{CEN} \in \mathbb{R}^{\mathsf{emb \ \ size}}) \tag{5} \end{equation} $$
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.03.26]</i></p>
+<p data-ke-size="size16">&bull; 손실 함수를 식 (6), (7)과 같이 설계. \(p\)와 \(q\)는 각 클러스터의 인덱스. 식 (4)의 \(n_{k}\)는 클러스터 \(k\)에 속하며 상위 신뢰 점수를 갖는 정점의 개수</p>
+<p data-ke-size="size16">$$ \begin{equation} \mathcal{L}_{pos} \varpropto - \mathsf{sim} (\mathbf{B}_{p[i, :]}^{v_{1}}, \mathbf{B}_{p[i, :]}^{v_{2}} ) \tag{6} \end{equation} $$</p>
+<p data-ke-size="size16">$$ \begin{equation} \mathcal{L}_{pos} \varpropto \mathsf{sim} (\mathbf{CEN}_{p}^{v_{1}}, \mathbf{CEN}_{q}^{v_{2}}) \tag{7} \end{equation} $$</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+<p data-ke-size="size16"><i>[24.04.01]</i></p>
+<p data-ke-size="size16">&bull; 인트로의 핵심 한 가지. 그래프 증강 방법에 따라 양성 샘플링과 음성 샘플링의 정확도가 크게 좌우됨</p>
+<p data-ke-size="size16">&bull; Siamese network(샴 네트워크)는 벡터화한 두 입력 객체의 유사도를 반환하는 네트워크</p>
+<p data-ke-size="size16">&bull; \(\tilde{\mathbf{X}} = (\mathbf{I}-\tilde{\mathbf{L}})^{t}\mathbf{X}\)는 이웃 정점들의 정보가 병합된(aggregated) 평탄화(smoothed)된 특징 행렬</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
