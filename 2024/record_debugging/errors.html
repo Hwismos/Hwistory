@@ -39,23 +39,7 @@
   &bull; [case 2]: <code>TypeError: cannot unpack non-iterable GCNLayer object</code>는 <code>self.GCNs</code>이 <code>GCN</code>과 <code>Attn</code>로 분리될 수 없기 때문에 발생함
 </p>
 
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<p data-ke-size="size16"><b>SyntaxError</b></p>
-
-<p data-ke-size="size16">&bull; .</p>
-
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<p data-ke-size="size16"><b>IndexError</b></p>
-
-<p data-ke-size="size16">&bull; .</p>
-
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<p data-ke-size="size16"><b>NameError</b></p>
-
-<p data-ke-size="size16">&bull; .</p>
+<p data-ke-size="size16">&bull; [case 3]: <code>TypeError: string indices must be integers</code>는 문자열을 인덱싱하고자 할 때 정수가 아닌 값이 들어왔기 때문에 발생함</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
@@ -68,16 +52,29 @@
   호출했기 때문에 발생함
 </p>
 
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<p data-ke-size="size16"><b>ValueError</b></p>
-
-<p data-ke-size="size16">&bull; .</p>
+<p data-ke-size="size16">&bull; [case 2]: <code>AttributeError: 'str' object has no attribute 'read'</code>는 str 객체에 read 함수가 정의되어 있지 않기 때문에 발생함</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
-<p data-ke-size="size16"><b>ImportError</b></p>
+<p data-ke-size="size16"><b>OSError</b></p>
 
-<p data-ke-size="size16">&bull; .</p>
+<p data-ke-size="size16">&bull; 시스템 관련 에러. 'file not found error'와 'disk full' 등의 에러가 이 에러에 속함</p>
+
+<p data-ke-size="size16">
+  &bull; 'en_core_web_lg' 모델을 spacy를 통해 load 하려고 할 때에도 발생함. 이 경우에는 해당 wheel 파일을 다운 받은 뒤
+  <code>python -m pip install ***.whl</code>로 설치
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16"><b>NameError</b></p>
+
+<p data-ke-size="size16">&bull; 접근하고자 하는 변수나 함수가 선언되지 않은 경우에 발생함</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16"><b>IndexError</b></p>
+
+<p data-ke-size="size16">&bull; 인덱스 범위를 넘어간 경우에 발생함</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />

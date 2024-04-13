@@ -20,10 +20,11 @@
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
-<p data-ke-size="size16"><b>PyTorch</b></p>
+<h2 data-ke-size="size26"><b>PyTorch</b></h2>
 
-<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code># unsqueeze
-      
+<p data-ke-size="size16"><b>unsqueeze</b></p>
+
+<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code>      
 import torch
 
 x = torch.tensor([[1,2,3,4], [5,6,7,8]])
@@ -39,14 +40,122 @@ torch.Size([1, 2, 4])
 torch.Size([2, 1, 4])
 torch.Size([2, 4, 1])
 torch.Size([2, 4, 1])
-"""</code></pre>
+"""
+</code></pre>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
 
+<p data-ke-size="size16"><b>IterableDataset</b></p>
+
+<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+# class BERTDGLREDataset(IterableDataset)
+
+train_set = BERTDGLREDataset(train_set_path, ner2id, rel2id)
+
+print(f"샘플 개수: {len(train_set)}")
+print(f"data 딕셔너리: {train_set.data[0].keys()}")
+print(f"ner2id 딕셔너리: {train_set.ner2id.keys()}")
+print(f"rel2id 딕셔너리: {train_set.rel2id.keys()}") # 97
+
+cnt = 0
+for x in train_set.data:
+    if cnt <= 2:
+        print(x)
+        cnt += 1
+    else:
+        break
+
+""" 
+샘플 개수: 3,053
+data 딕셔너리: dict_keys(['vertexSet', 'labels', 'title', 'sents'])
+ner2id 딕셔너리: dict_keys(['BLANK', 'ORG', 'LOC', 'TIME', 'PER', 'MISC', 'NUM'])
+rel2id 딕셔너리: dict_keys(['P1376', 'P607', 'P136', ..., 'P1056'])
+
+{'vertexSet': [[{'pos': [0, 4], 'type': 'ORG', ... }}
+{'vertexSet': [[{'pos': [7, 9], 'type': 'MISC', ...}}
+"""
+</code></pre>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
+
+<p data-ke-size="size16"><b>DataLoader</b></p>
+
+<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+  # class BERTDGLREDataLoader(DataLoader)
+
+train_loader = DGLREDataloader(train_set, 
+                                batch_size=16, 
+                                shuffle=True, 
+                                negativa_alpha=4)
+
+"""
+3,053개의 샘플을 16개의 배치 단위로 구분하여 총 191개의 배치를 생성함
+"""
+</code></pre>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
-<p data-ke-size="size16"><b>DGL</b></p>
+<h2 data-ke-size="size26"><b>Transformer</b></h2>
 
-<p data-ke-size="size16">&bull; .</p>
+<p data-ke-size="size16"><b>BertTokenizer</b></p>
+
+<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code>      
+from transformers import BertTokenizer
+
+my_tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+
+text = 'hello world'
+tokens = my_tokenizer.tokenize(text)
+token_ids = my_tokenizer.convert_tokens_to_ids(tokens)
+
+"""
+tokens: ['hello', 'world']
+token_ids: [19082, 1362]
+"""
+
+words = words[:10]
+print(f"단어 개수: {len(words)}, 단어 구성: {words}")
+
+# BertTokenizer를 이용하여 정의한 Bert 클래스
+
+class Bert():
+  MASK = '[MASK]'
+  CLS = "[CLS]"
+  SEP = "[SEP]"
+
+  def __init__(self):
+    super().__init__()
+    self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+  
+# ... 
+
+my_bert = Bert()
+
+subwords, token_starts_ids = my_bert.subword_tokenize(words)
+print(f"subwords 개수: {len(subwords)}, subwords 구성: {subwords}")
+
+"""
+words 개수: 10
+words 구성: ['The', 'short', '-', 'beaked', 'common', 'dolphin', '(', 'Delphinus', 'delphis', ')']
+
+subwords 개수: 18
+subwords 구성: ['[CLS]', 'The', 'short', '-', 'be', '##aked', 'common', 'do', '##lphin', '(', 'Del', '##phi', '##nus', 'del', '##phi', '##s', ')', '[SEP]']
+"""
+</code></pre>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<h2 data-ke-size="size26"><b>Spacy</b></h2>
+
+<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code>      
+nlp = spacy.load('en_core_web_lg')
+print(len(nlp.vocab.vectors))
+print(len(nlp.vocab.vectors[2667587279770775948]))
+
+"""
+514157  # 514K
+300     # dimension
+"""
+</code></pre>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
