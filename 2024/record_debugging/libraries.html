@@ -113,9 +113,6 @@ tokens: ['hello', 'world']
 token_ids: [19082, 1362]
 """
 
-words = words[:10]
-print(f"단어 개수: {len(words)}, 단어 구성: {words}")
-
 # BertTokenizer를 이용하여 정의한 Bert 클래스
 
 class Bert():
@@ -130,6 +127,9 @@ class Bert():
 # ... 
 
 my_bert = Bert()
+
+words = words[:10]
+print(f"words 개수: {len(words)}, words 구성: {words}")
 
 subwords, token_starts_ids = my_bert.subword_tokenize(words)
 print(f"subwords 개수: {len(subwords)}, subwords 구성: {subwords}")
