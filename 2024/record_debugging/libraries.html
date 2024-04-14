@@ -159,3 +159,38 @@ print(len(nlp.vocab.vectors[2667587279770775948]))
 </code></pre>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<h2 data-ke-size="size26"><b>Scikit-learn</b></h2>
+
+<p data-ke-size="size16"><b>T-SNE</b></p>
+
+<pre id="code_1712975682143" class="python" data-ke-language="python" data-ke-type="codeblock"><code>      
+# import torch
+# import numpy as np
+# from torch_geometric.datasets import Planetoid
+# from sklearn.manifold import TSNE
+# from matplotlib import pyplot as plt 
+
+dataset_name = 'cora'
+path = '/.../data'
+
+dataset = Planetoid(path, dataset_name)
+data = dataset[0]
+
+features = data.x
+feat_numpy = features.numpy()
+
+labels = data.y.numpy()
+
+reduced_emb = TSNE(n_components=2, learning_rate='auto', init='random').fit_transform(feat_numpy)
+
+unique_labels = data.y.unique().numpy()
+for label in unique_labels:
+    idx = np.where(labels == label)
+    plt.scatter(reduced_emb[idx, 0], reduced_emb[idx, 1], marker='.', label=label)
+
+plt.legend()
+plt.show()
+</code></pre>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
