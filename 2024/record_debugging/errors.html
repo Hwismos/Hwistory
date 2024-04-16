@@ -65,6 +65,13 @@
   <code>python -m pip install ***.whl</code>로 설치
 </p>
 
+<p data-ke-size="size16">
+  &bull; <code>disk quota exceeded</code>는 디스크 용량이 초과되어 발생함. <code>du -m --max-depth=2 | sort -rn</code> 커맨드로 파일들의 용량을 확인하고 불필요한 파일들을 제거해야 함. 모델 관련 수
+  많은 <code>pt</code>을 제거하였더니 83GB에서 4GB로 감소함
+</p>
+
+<!-- added -->
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
 <p data-ke-size="size16"><b>NameError</b></p>
@@ -94,5 +101,3 @@
 <p data-ke-size="size16">&bull; SytaxError 파이썬 인터프리터가 찾아낸 에러 . RuntimeError는 CPU가 기계어로 변역된 프로그램을 수행하던 중 찾아낸 에러</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<!-- added -->

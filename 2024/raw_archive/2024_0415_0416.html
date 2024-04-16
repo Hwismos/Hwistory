@@ -1,0 +1,81 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+
+<style>
+  code {
+    font-family: "Pretendard-Regular";
+    font-size: inherit;
+    color: rgb(255, 101, 101);
+    background: rgb(236, 230, 223);
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    padding: 0.1rem 0.3rem 0.2rem;
+    border-radius: 0.2rem;
+  }
+</style>
+
+<!--  4월 15일 월요일 -->
+
+<p data-ke-size="size18"><b>2024_0415</b></p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16">&bull; Sequence information. Heterogeneous graph. Graph transformer</p>
+
+<p data-ke-size="size16">&bull; Heterophilous graph. neighborhood pattern. Contrastive learning</p>
+
+<p data-ke-size="size16">&bull; 중요하지만 급하진 않은 일: 논문 읽기. 컴퓨터 구조 이해하기</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; Sag-DRE는 크게 다섯 가지의 레이어 집합이 있음. GCN이 세 개의 레이어로 구성되어 있음. 이 중 한 개의 레이어는 <code>start_gcn</code>이라는 이름으로, GCN과 Attn 레이어의 반복문에 들어가기 전에
+  실행됨
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; GCN을 MLP로 대체한 것이 GCN을 이용한 것보다 더 성능이 좋다면 과평탄화 현상의 발생을 주장할 수도 있음. 아래 제시한 버트 모델의 Ign F1 스코어의 상승폭의 약 40%에 달하는 수치가 감소한 것임
+</p>
+
+<p data-ke-size="size16">&bull; BERT 기반의 모델은 test 데이터셋에서 Ign F1과 F1이 각각 <u>0.8%</u>와 <u>1.02%</u> 향상되었음. Glove보다 향상폭이 작음</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">&bull; Half-Hop으로 upsamling한 그래프로 모델 돌리고 퇴근하고자 함. 메모리 에러 떠서 실패</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<!--  4월 16일 화요일 -->
+
+<p data-ke-size="size18"><b>2024_0416</b></p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16">
+  &bull; 여일이관지. 늘 사람을 중심으로 생각하기. 술이부작. 계승하기. 교수님께 여쭤보기. 돌아간다면 반드시 할 한 가지. 반드시 하지 않을 한 가지. 3월과 4월 회고는 지금 당장 급한 일은 아님
+</p>
+
+<p data-ke-size="size16">
+  &bull; 논문은 연구의 결과물이지 완전한 완성본이라고 할 수는 없음. 코드에서 수 없이 많은 저자의 의도가 담겨 있음. 따라서 코드도 같이 봐야 함. <u>분류 전 기록들을 주 단위로 관리하고자 함</u>
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 다시 후배 입장에서 생각. 실험 과정 중 꿀팁들을 모아두는 것도 좋을 것 같다고 생각함. 오늘 떠오른 꿀팁은 <u>데이터를 읽은 객체를 save/load 함으로써 데이터를 읽는 시간을 줄이기</u>
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 용량 초과로 저장이 안됨. <code>du -m --max-depth=2 | sort -rn</code> 커맨드로 디스크 용량 확인. April 폴더가 83GB를 먹고 있음. 저장하려고 했던 데이터로더 인스턴스와 세 번의 복원 과정에서
+  저장된 모델 pt 파일들을 모두 제거. 단 베스트 모델만 남김. 그 결과 3.8GB로 감소함. 95%를 제거함
+</p>
+
+<p data-ke-size="size16">&bull; <code>CUDA out of memory</code>가 대표적인 런타임 에러. 하지만 해결방법을 찾지는 못하고 16 사이즈의 배치를 8로 돌려서 일단 실행시켜봄</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
