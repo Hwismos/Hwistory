@@ -22,28 +22,19 @@
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
-<p data-ke-size="size16">&bull; Sequence information. Heterogeneous graph. Graph transformer</p>
-
-<p data-ke-size="size16">&bull; Heterophilous graph. neighborhood pattern. Contrastive learning</p>
-
-<p data-ke-size="size16">&bull; 중요하지만 급하진 않은 일: 논문 읽기. 컴퓨터 구조 이해하기</p>
-
-<p>&nbsp;</p>
+<p data-ke-size="size16">
+  &bull; Sequence information. Heterogeneous graph. Graph transformer. Heterophilous graph. neighborhood pattern. Contrastive learning. 중요하지만 급하진 않은 일: 논문 읽기. 컴퓨터 구조 이해하기
+</p>
 
 <p data-ke-size="size16">
   &bull; Sag-DRE는 크게 다섯 가지의 레이어 집합이 있음. GCN이 세 개의 레이어로 구성되어 있음. 이 중 한 개의 레이어는 <code>start_gcn</code>이라는 이름으로, GCN과 Attn 레이어의 반복문에 들어가기 전에
   실행됨
 </p>
 
-<p>&nbsp;</p>
-
 <p data-ke-size="size16">
-  &bull; GCN을 MLP로 대체한 것이 GCN을 이용한 것보다 더 성능이 좋다면 과평탄화 현상의 발생을 주장할 수도 있음. 아래 제시한 버트 모델의 Ign F1 스코어의 상승폭의 약 40%에 달하는 수치가 감소한 것임
+  &bull; BERT 기반의 모델은 test 데이터셋에서 Ign F1과 F1이 각각 <u>0.8%</u>와 <u>1.02%</u> 향상되었음. Glove보다 향상폭이 작음. GCN을 MLP로 대체한 것이 GCN을 이용한 것보다 더 성능이 좋다면 과평탄화
+  현상의 발생을 주장할 수도 있음. 제시된 버트 모델의 Ign F1 스코어의 상승폭의 약 40%에 달하는 수치가 감소한 것임
 </p>
-
-<p data-ke-size="size16">&bull; BERT 기반의 모델은 test 데이터셋에서 Ign F1과 F1이 각각 <u>0.8%</u>와 <u>1.02%</u> 향상되었음. Glove보다 향상폭이 작음</p>
-
-<p>&nbsp;</p>
 
 <p data-ke-size="size16">&bull; Half-Hop으로 upsamling한 그래프로 모델 돌리고 퇴근하고자 함. 메모리 에러 떠서 실패</p>
 
@@ -56,26 +47,38 @@
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
 <p data-ke-size="size16">
-  &bull; 여일이관지. 늘 사람을 중심으로 생각하기. 술이부작. 계승하기. 교수님께 여쭤보기. 돌아간다면 반드시 할 한 가지. 반드시 하지 않을 한 가지. 3월과 4월 회고는 지금 당장 급한 일은 아님
+  &bull; 여일이관지. 늘 사람을 중심으로 생각하기. 술이부작. 계승하기. 교수님께 여쭤보기. 돌아간다면 반드시 할 한 가지. 반드시 하지 않을 한 가지. 3월과 4월 회고는 지금 당장 급한 일은 아님. 논문은
+  연구의 결과물이지 완전한 완성본이라고 할 수는 없음. 코드에서 수 없이 많은 저자의 의도가 담겨 있음. 따라서 코드도 같이 봐야 함. <u>분류 전 기록들을 주 단위로 관리하고자 함</u>. 다시 후배 입장에서
+  생각. 실험 과정 중 꿀팁들을 모아두는 것도 좋을 것 같다고 생각함. 오늘 떠오른 꿀팁은 <u>데이터를 읽은 객체를 save/load 함으로써 데이터를 읽는 시간을 줄이기</u>
 </p>
-
-<p data-ke-size="size16">
-  &bull; 논문은 연구의 결과물이지 완전한 완성본이라고 할 수는 없음. 코드에서 수 없이 많은 저자의 의도가 담겨 있음. 따라서 코드도 같이 봐야 함. <u>분류 전 기록들을 주 단위로 관리하고자 함</u>
-</p>
-
-<p>&nbsp;</p>
-
-<p data-ke-size="size16">
-  &bull; 다시 후배 입장에서 생각. 실험 과정 중 꿀팁들을 모아두는 것도 좋을 것 같다고 생각함. 오늘 떠오른 꿀팁은 <u>데이터를 읽은 객체를 save/load 함으로써 데이터를 읽는 시간을 줄이기</u>
-</p>
-
-<p>&nbsp;</p>
 
 <p data-ke-size="size16">
   &bull; 용량 초과로 저장이 안됨. <code>du -m --max-depth=2 | sort -rn</code> 커맨드로 디스크 용량 확인. April 폴더가 83GB를 먹고 있음. 저장하려고 했던 데이터로더 인스턴스와 세 번의 복원 과정에서
-  저장된 모델 pt 파일들을 모두 제거. 단 베스트 모델만 남김. 그 결과 3.8GB로 감소함. 95%를 제거함
+  저장된 모델 pt 파일들을 모두 제거. 단 베스트 모델만 남김. 그 결과 3.8GB로 감소함. 95%를 제거함. <code>CUDA out of memory</code>가 대표적인 런타임 에러. 하지만 해결방법을 찾지는 못하고 16 사이즈의
+  배치를 8로 돌려서 일단 실행시켜봄. 부족한 메모리가 크게 줄지도 않음. 고로 해결 안됨
 </p>
 
-<p data-ke-size="size16">&bull; <code>CUDA out of memory</code>가 대표적인 런타임 에러. 하지만 해결방법을 찾지는 못하고 16 사이즈의 배치를 8로 돌려서 일단 실행시켜봄</p>
+<p data-ke-size="size16">
+  &bull; 구현할 때 가장 주의할 점. 코드 생성하는 것과 검색하는 것에 치중하다보니 기록이 안 남음. 결과라도 남으면 모를까 결과적으로 실행도 안되면 진짜 시간 낭비임. 구현 중
+  <u>첫 번째 우선순위는 과정을 기록하는 것</u>으로 하고 정상적으로 실행시키는 것을 두 번째 우선순위로 설정. 이를 위해 의도적으로 기록하는 프로그램을 메인 화면에 고정. 현실 파악. 현재 시각은 17시. 21시
+  30분 정도에 퇴근한다고 하고 식사시간을 1시간 정도로 잡는다면 남은 시간은 불과 3시간 30분 정도. 호학 불천노 불이과. 같은 잘못을 두 번 되풀이하지 않으면 됨. 지금까지 한 작업이라도 분류 및 평가하도록
+  하겠음
+</p>
+
+<p data-ke-size="size16">
+  &bull; 오전에는 실험의 효율을 높이기 위해 Dataloader 객체를 save-load 하려고 하였음. 하지만 디스크 용량 초과 에러로 실패함. 이 과정에서 구현 상 변화를 단순히 확인하는 용도를 위해서는 일부 배치만
+  파일로 저장하고 로드한 뒤 forwarding을 해보는 것도 괜찮겠다라고 생각하였음. 이를 위해서 ipynb에서 하나의 배치를 저장하고 수행하였지만 텐서가 두 메모리에 흩어져있다는 에러로 현재(17시) 실패한 상황.
+  오후에는 오전에 해결하지 못했던 OOM 문제를 해결하고자 하였음. 배치 단위로 메모리 사용 변화량을 확인하고자 하였으나 앞서 말한 것처럼
+  <code>Expected all tensors to be on the same device</code> 에러로 멈춘 상황. 그러면 지금 해야할 일은? <u>중요한 것은 데이터에 대한 유의미한 분석</u>
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16"><b>Heterophilous graph contrastive learning</b></p>
+
+<p data-ke-size="size16">
+  &bull; 코드에 담긴 저자의 생각을 파악하기 위해 끊어서 확인해볼 것. 확인하고자 하는 것은 GREET의 인공 그래프를 변형하는 것. <u>무작정 코드로 뛰어들지 말 것</u>. 정신병 걸릴 것 같음. GACL 벡터로 GREET
+  조정해볼라 하니까 생각보다 좀 걸릴 것도 같음. 그런데 씻고 오고 싶음. 꿉꿉함. 그런데 좀 있으면 서울역으로 가야 함. 그런데 연구실 서버 연결은 안됨. 잠 포기하고 코랩으로라도 해야 함
+</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
