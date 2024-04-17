@@ -55,8 +55,189 @@
   생각하시고 지금도 원채 많이 쓰이고 있으니 이렇게 시간을 들여 이야기해주시지 않을까 생각함
 </p>
 
+<p data-ke-size="size16">&bull; 석사 1학기 동안 <u>컴퓨터에 대한 공감 능력</u>을 높이겠음. 그리고 <u>사람에 대한 공감 능력</u>을 높여서 무궁무진하게 활용하고 싶음</p>
+
+<p data-ke-size="size16">&bull; <u>친해져야 할 대상은 저자와 컴퓨터와 데이터</u></p>
+
 <p data-ke-size="size16">
-  &bull; 석사 1학기 안으로 <u>구현</u> 능력은 패스 시키겠음. 이를 위해 <u>컴퓨터에 대한 공감 능력</u>을 좀 더 높여야 함. 지금이 그런 단계인 것 같음. 다음부터 무궁무진하게 <u>활용</u>하고 싶음
+  &bull; 늘 대화를 그만두는 쪽은 나였음. 저자의 생각은 논문에도 담겨 있지만 코드에도 상당히 많이 담겨 있음. 당연한 이야기이지만 논문을 쓰기 위해서는 연구를 잘해야 함. 연구를 잘하기 위해서는 데이터를
+  잘 분석해야 함. 데이터를 잘 분석하기 위해서는 데이터와 친해져야 함. 데이터와 친해지기 위해서는 데이터와 공감해야 함. 데이터와 공감하기 위해서는 데이터를 자주 만나야 함.
+  <u>데이터와 공감하지도 못하면서 연구를 잘하고자 했던 오만</u>. 동일한 결과를 얻기 위해 실험을 적게할 필요는 당연히 있지만 그렇다고 데이터와 멀어져선 안됨.
+  <u>좋은 연구란 좋은 데이터에 대한 좋은 분석임</u>
+</p>
+
+<p data-ke-size="size16">&bull; 중용을 위해 끊임없이 배우고 생각해야 함</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16"><b>KCC 2024</b></p>
+
+<p data-ke-size="size16">&bull; <u>오만</u>. 나는 SagDRE의 저자들을 전혀 이해하지 못하고 있었음</p>
+
+<p data-ke-size="size16">
+  &bull; SagDRE 코드와 논문을 함께 보면서 저자를 이해하기 위해 노력해보고자 함. 먼저 데이터부터 보겠음. <code>train_set[idx]</code>와 <code>train_set.data[idx]</code>를 살펴보는 중. 전자에는 해당
+  문서에 대한 메타데이터가 있는 것으로 추측하고 있음
+</p>
+
+<p data-ke-size="size16">
+  &bull; DocRED 저자들이 예시로 제시한 문서(document)를 dev_set에서 찾았음. 총 11개의 문장으로 구성되어 있다고 함. 각 문장은 토큰화가 이미 되어있는 상태. 버트(BERT)가 토큰화함. 이제 Wei가 이야기한
+  mentions와 span에 대해서 찾아보고자 함. 토큰이 엔티티보다 작은 요소라는 점은 확실히 알겠음. 예시 2의 'r'이 관계에 대한 번호. 예시 3에서 'pos'는 sent에서 토큰의 시작과 끝 위치. 'h'는
+  [0,8,10,4,5,14,8,20,3]으로 되어 있고 't'는 [8,0,5,4,7]로 되어 있음. 이게 'pos'와 관련 있는지 알아야겠음. pos의 시작 위치는 아닌 것 같음. 레이블은 13개이고 엔티티는 22개. 96개의 관계를 사전 정의된
+  관계 집합과 매핑한 파일이 <code>rel2id.json</code> 파일. 'r': 12는 P361로 "part of" 관계를 의미함. 'h': 0과 't': 8이 part_of 관계라고 함. 반대의 11번 관계는 P527, has part 관계라고 함. 즉 엔티티
+  0번은 <i>Kungliga Hovkapellet</i>이고 8번은 <i>Royal Court Orchestra</i>인 것 같음. 이 순서는 어떻게 매겨졌는지는 모르겠음
+</p>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713341796812" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+# 예시 1: dev_set.data[278]['sents']
+
+'''
+['Kungliga', 'Hovkapellet', '(', ',', 'The', 'Royal', 'Court', 'Orchestra', ')', 'is', 'a', 'Swedish', 'orchestra', ',', 'originally', 'part', 'of', 'the', 'Royal', 'Court', 'in', 'Sweden', "'s", 'capital', 'Stockholm', '.']
+['Its', 'existence', 'was', 'first', 'recorded', 'in', '1526', '.']
+['Since', '1773', 'it', 'is', 'part', 'of', 'the', 'Royal', 'Swedish', 'Opera', "'s", 'company', '.']
+...
+['Kungliga', 'Hovkapellet', 'is', 'one', 'of', 'the', 'oldest', 'active', 'orchestras', 'in', 'the', 'world', '.']
+['It', 'was', 'first', 'recorded', 'in', 'the', 'royal', 'account', 'books', 'from', '1526', '.']
+'''
+</code></pre>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713341796812" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+# 예시 2: dev_set.data[278]['labels']
+
+'''
+{'r': 12, 'h': 0, 't': 8, 'evidence': [0, 2, 10], 'in_train': False}
+{'r': 11, 'h': 8, 't': 0, 'evidence': [0, 10, 2], 'in_train': False}
+{'r': 72, 'h': 8, 't': 0, 'evidence': [0, 10, 2], 'in_train': False}
+...
+{'r': 1, 'h': 20, 't': 4, 'evidence': [0, 9], 'in_train': False}
+{'r': 1, 'h': 3, 't': 4, 'evidence': [0], 'in_train': False}
+{'r': 15, 'h': 8, 't': 7, 'evidence': [10], 'in_train': False}
+'''
+</code></pre>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713341796812" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+# 예시 3: dev_set.data[278]['vertexSet'][0]
+
+'''
+[{'name': 'Royal Court Orchestra',
+  'pos': [5, 8],
+  'sent_id': 0,
+  'type': 'ORG',
+  'global_pos': (5, 8)},
+  {'name': 'Kungliga Hovkapellet',
+  'pos': [17, 19],
+  'sent_id': 10,
+  'type': 'ORG',
+  'global_pos': (180, 182)},
+  {'pos': [0, 2],
+  'type': 'ORG',
+  'sent_id': 0,
+  'name': 'Kungliga Hovkapellet',
+  'global_pos': (0, 2)},
+  {'pos': [0, 2],
+  'type': 'ORG',
+  'sent_id': 3,
+  'name': 'Kungliga Hovkapellet',
+  'global_pos': (47, 49)}]
+'''
+</code></pre>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16"><b>논문과 코드에 담긴 저자의 생각 따라가기</b></p>
+
+<p data-ke-size="size16">&bull; 앞선 과정에서 Wei가 이용한 데이터셋에 대한 모든 이해를 한 것은 당연히 아님. 사실 Wei가 생각한 방향과 아예 다른 방향으로 판 것일 수도 있음</p>
+
+<p data-ke-size="size16">
+  &bull; 20시. 논문과 코드를 함께 보며 저자가 어떻게 학습 모델을 설계했는지를 문답해보겠음. 저자가 지향하는 바는 sequential information. 저자들은 버트를 이용해서 16(배치 단위)개의 문서들에 속한 단어
+  벡터 행렬(\(\mathbf{H} \in \mathbb{R}^{\mathsf{batch\_num} \times \mathsf{words\_indicies} \times \mathsf{BERT\_dim}}\))을 생성함. 이때 배치 내의 문서 중 words 수가 가장 많은 문서에 의해
+  <code>words_indicies</code>가 결정됨
+</p>
+
+<p data-ke-size="size16">
+  &bull; 저자들은 문서 단위로 그래프를 구성함. 한 문서 내의 모든 문장 리스트들과 <code>pos_idx</code>를 이용함. <code>pos_idx</code> 이해가 필요. 문서의 max_length를 512로 제한함. 단어의 개수를 제한한
+  것이 아닐까 싶음. <code>build_g</code> 함수에서 <code>spacy</code> 라이브러리로 생성한 <code>nlp</code> 객체를 이용해서 <code>docs</code> 리스트 생성. 한 word가 token으로 취급되는 것 같음
+</p>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713341796812" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+sentences = dev_set.data[278]['sents']
+docs = [Doc(nlp.vocab, words=ws) for ws in sentences]
+for tokens in nlp.pipe(docs):
+    print(tokens)
+  
+'''
+Kungliga Hovkapellet ( , The Royal Court Orchestra ) is a Swedish orchestra , originally part of the Royal Court in Sweden 's capital Stockholm . 
+Its existence was first recorded in 1526 . 
+...
+From 1731 , public concerts were performed at Riddarhuset in Stockholm . 
+Since 1773 , when the Royal Swedish Opera was founded by Gustav III of Sweden , the Kungliga Hovkapellet has been part of the opera 's company . 
+'''
+</code></pre>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; <code>parse_sent</code>가 그래프를 구성하는 핵심 함수인데 처음 봄. 시각적으로 보고 싶음. 일단 포기. sub가 토큰 개수고 word 임베딩에 대한 버트의 벡터와 결합할 수 있도록 해주나봄
+</p>
+
+<p data-ke-size="size16">
+  &bull; OOM 걸린 이유를 알 것도 같음. 노드의 개수가 5,201개인 Squirrel의 경우 27,040,401개의 관계 데이터를 저장할 수 있는 공간이 필요함. 아래 코드의 결과처럼 행렬을 구성하는 원소 개수가 매우 크게
+  차이가 남
+</p>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713341796812" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+# Half-Hop 전후 행렬의 크기 차이
+
+for doc in my_new_batch:
+  print(f"특징 행렬: ({doc[0].size(0)}, {doc[0].size(1)})--{doc[0].size(0) * doc[0].size(1)} || 인접 행렬: ({doc[1].num_nodes()}, {doc[1].num_nodes()})--{doc[1].num_nodes() * doc[1].num_nodes()}")
+    
+'''
+특징 행렬: (214, 768)--164352 || 인접 행렬: (214, 214)--45796
+특징 행렬: (151, 768)--115968 || 인접 행렬: (151, 151)--22801
+...
+특징 행렬: (269, 768)--206592 || 인접 행렬: (269, 269)--72361
+특징 행렬: (170, 768)--130560 || 인접 행렬: (170, 170)--28900
+'''
+
+haflhop = HalfHop(alpha=0.5, p=0.99)
+
+upsampled_batch = []
+
+for doc in my_new_batch:
+    feat = doc[0]
+    adj = doc[1]
+    edge_index = torch.cat(
+        [adj.edges()[0].unsqueeze(0), adj.edges()[1].unsqueeze(0)], dim=0
+    )
+    num_nodes = adj.number_of_nodes()
+
+    upsampled_batch.append(haflhop(feat, edge_index, num_nodes))
+
+for doc in upsampled_batch:
+    print(f"특징 행렬: ({doc[0].size(0)}, {doc[0].size(1)})--{doc[0].size(0) * doc[0].size(1)} || 인접 행렬: ({len(doc[1][0])}, {len(doc[1][0])})--{len(doc[1][0]) * len(doc[1][0])}")
+  
+'''
+특징 행렬: (741, 768)--569088 || 인접 행렬: (1813, 1813)--3286969
+특징 행렬: (492, 768)--377856 || 인접 행렬: (1183, 1183)--1399489
+...
+특징 행렬: (895, 768)--687360 || 인접 행렬: (2155, 2155)--4644025
+특징 행렬: (564, 768)--433152 || 인접 행렬: (1363, 1363)--1857769
+'''
+</code></pre>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 돌아가는지 보고 HalfHop의 <code>p</code>값이 무엇인지는 잘 모르겠으나 수정해서 또 돌려두고 퇴근할 계획. <code>0.99</code>로는 배치 단위를 1로 해도 안됨. 0.5로 해서 1 배치로 돌리는 중
 </p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
