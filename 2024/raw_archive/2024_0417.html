@@ -1,0 +1,62 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+
+<style>
+  code {
+    font-family: "Pretendard-Regular";
+    font-size: inherit;
+    color: rgb(255, 101, 101);
+    background: rgb(236, 230, 223);
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    padding: 0.1rem 0.3rem 0.2rem;
+    border-radius: 0.2rem;
+  }
+</style>
+
+<p data-ke-size="size18"><b>2024_0417</b></p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16"><b>자연어처리 수업</b></p>
+
+<p data-ke-size="size16">
+  &bull; 인터넷 상에서 비지도 방식으로 대용량 pretrain함으로써 foundation model을 잘 만들 수 있음. 코드 생성과 수학적 사고에서는 아직 human performance에 미치지 못함(핫한 주제). BERT에서 시작한
+  pretrain이 GPT에서는 pretrain과 finetuning이 합쳐짐
+</p>
+
+<p data-ke-size="size16">
+  &bull; word embedding의 한계. UNK(UNKnown vector). 한 word를 subword로 쪼갤 수 있음. 실무에서는 tokenizing이 가장 성능에 영향을 크게 미침. [EX] 언어모델은 1000264 인덱스의 토큰 뒤에 9125 인덱스
+  토큰이 올 확률이 높아지도록 파라미터를 조정. pretrain의 핵심은 인풋의 일부를 가리고 잘 복원하기. corpus는 말뭉치. pretrain 할 때 finetuning의 loss도 떨어뜨릴 수 있도록 데이터를 pretrain 단계로
+  이동시킴. 엄청 큰 코퍼스를 모은 뒤에 de-duplicating. 인코더는 양방향 디코더는 다음 단어 예측 잘하기
+</p>
+
+<p data-ke-size="size16">
+  &bull; GPT는 다음 단어를 맞추는 방식으로 BERT는 가운데 단어를 맞추는 방식으로 pretrain. BERT는 두 개의 문장을 인풋으로 주입. MNLI는 두 문장의 관계를 맞추는 태스크. BERT는 시퀀스를 대표하는 벡터를
+  만드는 것에 유리. 생성은 못한다는 점이 한계
+</p>
+
+<p data-ke-size="size16">
+  &bull; T5가 대표적인 encoder-decoder 모델. 트랜스포머 원래 구조를 그대로 이용. 단답형 태스크에서 높은 성능을 보임. pretrain이 중요함이 T5에서도 강조됨. GPT는 pretrain 속에 녹아 있는 수 많은
+  corpus에서 태스크를 위해 발현시킬 트리거만 던져주기. 싸게 GPT를 이용하는 것이 트렌드. 사전 학습을 위한 코퍼스 생성이 여기서도 핵심
+</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">&bull; 결국 어제는 텍스트 데이터도 그래프 데이터도 제대로 학습을 못했음</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 교수님의 입장에서 생각해보기. 전달해주고자 하는 정보도 너무 많고 현업의 디테일도 너무나 많이 알고 계심. 하지만 그것들을 학생들이 모두 소화하지 못함은 아직 모르시는 것 같음. 중요도 측면에서도
+  학생들이 분리할 수 있다고 가정하시는 것 같음. 하지만 현업의 감각이 현재 다른 교수님들에 비해 가장 날카로운 것은 사실. 트랜스포머를 기반으로 하는 <u>BERT, T5, GPT를 구분하는 것</u>을 중요하게
+  생각하시고 지금도 원채 많이 쓰이고 있으니 이렇게 시간을 들여 이야기해주시지 않을까 생각함
+</p>
+
+<p data-ke-size="size16">
+  &bull; 석사 1학기 안으로 <u>구현</u> 능력은 패스 시키겠음. 이를 위해 <u>컴퓨터에 대한 공감 능력</u>을 좀 더 높여야 함. 지금이 그런 단계인 것 같음. 다음부터 무궁무진하게 <u>활용</u>하고 싶음
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
