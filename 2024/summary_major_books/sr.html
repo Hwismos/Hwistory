@@ -106,7 +106,7 @@
 <p data-ke-size="size16"><b>2. 칼디를 이용한 데이터 전처리</b></p>
 
 <p data-ke-size="size16">
-  &bull; 칼디 프로그램 실행을 위한 도커 이용 방법. 먼저<u>하이퍼바이저와 컨테이너</u>. 하이퍼바이저는 호스트 OS 위에서 게스트 OS를 운영할 수 있게 해주는 프로그램. 각 게스트 OS는 독립된 환경을 구축할
+  &bull; 칼디 프로그램 실행을 위한 도커 이용 방법. 먼저 <u>하이퍼바이저와 컨테이너</u>. 하이퍼바이저는 호스트 OS 위에서 게스트 OS를 운영할 수 있게 해주는 프로그램. 각 게스트 OS는 독립된 환경을 구축할
   수 있으나 하이퍼바이저를 거쳐야 하기 때문에 속도 측면에서 느린 단점이 있음. 반면 호스트 OS를 공유하되 필요한 프로세스만 격리한 컨테이너는 하이퍼바이저를 거칠 필요가 없고 호스트 OS의 기능을
   직접적으로 이용할 수 있음. 컨테이너를 실행하기 위해서는 컨테이너를 실행하기 위해 필요한 파일들의 집합인 이미지 파일이 필요함. 도커(docker)는 부두에서 컨테이너를 옮기고 관리하는 직업. 도커를 통해
   이미지 파일로 컨테이너를 만들고 컨테이너를 커스터마이징해서 다시 이미지로 만드는 등 격리된 환경을 자유롭게 구축할 수 있음. <u>컨테이너로 별 지랄을 해도 이미지에는 아무런 변화가 없음</u>. 윈도우 CMD.
@@ -137,11 +137,45 @@
 
 <p>&nbsp;</p>
 
-<p data-ke-size="size16">&bull; .</p>
+<p data-ke-size="size16">
+  &bull; [코드 6]을 이용해 Librispeech 데이터셋 다운로드. [코드 7]을 통해 도커 이미지와 컨테이너 파일이 차지하는 용량을 확인할 수 있음. [코드 8] 실행 시 발생한 에러들을 기록. [코드 9]로 flac (오디오
+  변환 파일) 설치. [코드 8]에서 <code>../LibriSpeech</code>를 <code>../LibriSpeech/train-clean-100</code>으로 수정. 뭔가 돌아가는 것 같음. [결과 8-1]과 같이 전처리가 정상적으로 됨. 처리된 양식 파일이
+  pre-processed file을 번역한 것 같음. 목록 양식은 색인화하고 아카이브 양식은 저장하는 데 사용된다고 함
+</p>
 
-<p data-ke-size="size16">&bull; 데이터셋 다운로드 및 구성 분석</p>
+<p>&nbsp;</p>
 
-<p data-ke-size="size16">&bull; .</p>
+<pre id="code_1713582929152" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>
+  # [코드 6]  
+  local/download_and_untar.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage https://www.openslr.org/resources/12 dev-clean
+  local/download_and_untar.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage https://www.openslr.org/resources/12 train-clean-100
+
+  # [코드 7]
+  docker system df -v
+
+  # [코드 8]
+  local/data_prep.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage/LibriSpeech/train-clean-100 data/train_clean_100
+  # [에러 8-1]: Please install 'flac' on ALL worker nodes!
+  # [결과 8-1]: successfully prepared data in data/train_clean_100
+  <!-- 
+  root@b13621f038d9:/opt/kaldi/egs/librispeech/s5# ls -li data/train_clean_100/
+  total 11432
+  127853 -rw-r--r-- 1 root root   10079 Apr 20 06:19 spk2gender  # 화자 → 성별 매핑
+  127854 -rw-r--r-- 1 root root  585891 Apr 20 06:19 spk2utt     # 화장 → 문장 매핑
+  127848 -rw-r--r-- 1 root root 5875339 Apr 20 06:19 text        # 텍스트 표시 양식
+  127851 -rw-r--r-- 1 root root 1011269 Apr 20 06:19 utt2spk     # 문장 → 화자 매핑
+  127830 -rw-r--r-- 1 root root 4213839 Apr 20 06:19 wav.scp     # 문장 오디오 양식
+  -->
+
+  # [코드 9]
+  apt-get install -y flac
+</code></pre>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16"><b>3. 파이썬 기반의 Librispeech 데이터셋 전처리 과정 분석</b></p>
+
+<p data-ke-size="size16">&bull; 목적은 동일. 모델을 훈련시키기 위한 데이터 전처리. wave2vec 코드를 돌리기 위해 LibriSpeech 파일 압축 해제 중</p>
 
 <p data-ke-size="size16">&bull; .</p>
 
