@@ -5,18 +5,6 @@
 
 <p data-ke-size="size18"><b>칼디로 배우는 음성인식 (천궈궈 외)</b></p>
 
-<p data-ke-size="size16">&nbsp;</p>
-
-<p data-ke-size="size16"><i>[24.03.06]</i></p>
-
-<p data-ke-size="size16">&bull; 음성 신호(wave)를 벡터로 만들고 다시 복원하는 과정 속에서 정보 손실을 최소화시키는 것이 음성 인식의 목표</p>
-
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<p data-ke-size="size16"><i>[24.03.12]</i></p>
-
-<p data-ke-size="size16">&bull; Makefile은 컴파일 의존성을 관리. 코랩에서 OpenFst를 설치하는 시간이 상당히 오래 걸림. kaldi 외에도 CMUSphinx 등의 오픈소스가 있긴 함</p>
-
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
 <p data-ke-size="size16"><i>[24.03.13]</i></p>
@@ -49,22 +37,6 @@
   &bull; 단위 임펄스 함수는 한 점(\(n=0\))에서만 물리량이 1이고 나머지는 모두 0인 함수. 입력 신호를 2 단위 시간 지연시키고자 할 때는 단위 시간 지연기(\(z^{-1}\)) 2개를 연속적으로 연결한 이산 시스템을
   구성할 수 있음
 </p>
-
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
-<p data-ke-size="size16"><i>[24.03.25]</i></p>
-
-<p data-ke-size="size16">
-  &bull; 프로그램은 특정 작업을 수행하는 명령어의 집합. 소프트웨어는 더 복잡한 작업을 수행하기 위한 프로그램의 집합. 프로세스는 메모리가 할당되며 활성화된 프로그램. 스레드는 프로세스 상 가장 작은 실행
-  단위. 호스트 OS는 실제 하드웨어 위에 있는 소프트웨어. 가상 OS는 가상 머신 위에 있는 소프트웨어
-</p>
-
-<p data-ke-size="size16">
-  &bull; 도커 이미지는 특정 환경 구성을 위한 파일들의 집합. 도커 컨테이너는 특정 이미지 위에서 동작하는 프로세스. ssh는 컨테이너와 달리 가상머신 접속을 위한 서버 프로세스로 쉘을 닫아도 종료되지 않고
-  다른 호스트 OS의 접속 기다림
-</p>
-
-<p data-ke-size="size16">&bull; 61GB에 달하는 원본 데이터를 칼디가 처리할 수 있는 형식으로 변환. 해당 데이터에 대한 전처리 스크립트를 분석. 윈도우에서 도커를 통해 예제 파일 실행 성공</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
@@ -116,5 +88,61 @@
   이용하여 기계학습을 수행하였음. 시간에 종속적인 음성 데이터를 학습하기 위해 RNN을 초기에 사용. CTC는 이 과정에서 입력 벡터와 출력 벡터 사이의 명시적 정렬 없이 최대 우도 기반의 손실 함수를
   설계함으로써 훈련의 단순화에 기여함
 </p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size18"><b>음성 신호의 특징 이해하기 및 칼디를 이용한 데이터 전처리 실습하기</b></p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16"><b>1. 음성 신호의 특징</b></p>
+
+<p data-ke-size="size16">&bull; 음성 신호 처리의 개요</p>
+
+<p data-ke-size="size16">&bull; 음성 신호의 특징</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16"><b>2. 칼디를 이용한 데이터 전처리</b></p>
+
+<p data-ke-size="size16">
+  &bull; 칼디 프로그램 실행을 위한 도커 이용 방법. 먼저<u>하이퍼바이저와 컨테이너</u>. 하이퍼바이저는 호스트 OS 위에서 게스트 OS를 운영할 수 있게 해주는 프로그램. 각 게스트 OS는 독립된 환경을 구축할
+  수 있으나 하이퍼바이저를 거쳐야 하기 때문에 속도 측면에서 느린 단점이 있음. 반면 호스트 OS를 공유하되 필요한 프로세스만 격리한 컨테이너는 하이퍼바이저를 거칠 필요가 없고 호스트 OS의 기능을
+  직접적으로 이용할 수 있음. 컨테이너를 실행하기 위해서는 컨테이너를 실행하기 위해 필요한 파일들의 집합인 이미지 파일이 필요함. 도커(docker)는 부두에서 컨테이너를 옮기고 관리하는 직업. 도커를 통해
+  이미지 파일로 컨테이너를 만들고 컨테이너를 커스터마이징해서 다시 이미지로 만드는 등 격리된 환경을 자유롭게 구축할 수 있음. <u>컨테이너로 별 지랄을 해도 이미지에는 아무런 변화가 없음</u>. 윈도우 CMD.
+  칼디 이미지 파일을 이용해 [코드 1]과 같이 칼디 컨테이너 생성. 김대권님의 <u>도커의 기본 사용법</u>. [코드 2]는 현재 실행 중인 모든 컨테이너 목록을 출력함. [코드 3]은 이미지 파일과 컨테이너 파일
+  사이의 변경 사항을 출력해줌. [코드 4]는 로컬에 저장된 이미지 파일들을 출력해줌. [코드 5]를 이용해 새로운 도커 이미지를 만들 수 있음
+</p>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713582929152" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>
+  # [코드 1]
+  docker run -it kaldiasr/kaldi:latest bash
+
+  # [코드 2]
+  docker ps
+  # CONTAINER ID   IMAGE           COMMAND   CREATED          STATUS          PORTS     NAMES
+  # 4a15750d4b9c   centos:latest   "bash"    40 seconds ago   Up 37 seconds             infallible_torvalds
+
+  # [코드 3]
+  docker diff {CONTAINER ID}
+
+  # [코드 4]
+  docker images
+
+  # [코드 5]
+  docker commit {CONTAINER ID} {IMAGE NAME}
+</code></pre>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">&bull; .</p>
+
+<p data-ke-size="size16">&bull; 데이터셋 다운로드 및 구성 분석</p>
+
+<p data-ke-size="size16">&bull; .</p>
+
+<p data-ke-size="size16">&bull; .</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
