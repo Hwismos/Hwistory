@@ -3,6 +3,19 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </p>
 
+<style>
+  code {
+    font-family: "Pretendard-Regular";
+    font-size: inherit;
+    color: rgb(255, 101, 101);
+    background: rgb(236, 230, 223);
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    padding: 0.1rem 0.3rem 0.2rem;
+    border-radius: 0.2rem;
+  }
+</style>
+
 <p data-ke-size="size18"><b>칼디로 배우는 음성인식 (천궈궈 외)</b></p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
@@ -177,6 +190,53 @@
 
 <p data-ke-size="size16">&bull; 목적은 동일. 모델을 훈련시키기 위한 데이터 전처리. wave2vec 코드를 돌리기 위해 LibriSpeech 파일 압축 해제 중</p>
 
-<p data-ke-size="size16">&bull; .</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size18"><b>음성 데이터를 이용한 학습 모델 설계하기</b></p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 허깅페이스 오디오 코스. 저자들은 트랜스포머를 이용한 오디오 데이터 학습 모델을 설계하는 것에 대하여 이야기 해주려고 함. 음성 인식과 오디오 분류 텍스트 데이터로부터 오디오 데이터 생성.
+  저자들은 코스를 7개의 유닛으로 구성. 첫 번째 유닛은 오디오 데이터 전처리. 두 번째와 세 번째 유닛은 트랜스포머 이용하기. 네 번째 여섯 번째 유닛은 다양한 태스크를 위한 모델 설계하기. 마지막 일곱 번째
+  유닛은 애플리케이션 만들기
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 유닛 1-1. 소리는 연속 신호. 컴퓨터가 해석할 수 있도록 샘플링이 필요. 각 <code>wav</code>, <code>flac</code>, <code>mp3</code> 형태의 파일은 저마다의 방식으로 오디오 신호를 샘플링 함. 초당
+  16,000번 샘플링되면 16kHZ. 사전 학습 모델을 이용하는 경우 resampling을 통해 sampling rate를 맞추는 전처리 작업이 필요함. bit depths를 이용해 진폭(데시벨)을 이산적으로 구분. UBAI 클라이언트
+  노드에서는 URL 접근 불가. 서버 노드는 가능. waveform은 time domain 표현. 샘플링된 진폭들이 시간 축에 대해 표현됨. frequency domain 표현을 시각화할 수도 있음. 스팩트럼은 고정된 시간 내 주파수에 따른
+  진폭 정보를 보여줌. 직관적으로 잘 이해가 안 가긴 함. 주파수는 단위 시간동안 진동한 횟수. 낮은 주파수는 낮은 소리이고 높은 주파수는 높은 소리. spectrum을 긴 시간 단위로 표현한 그림이 spectrogram.
+  음성 데이터를 spectrogram으로 변형해서 모델을 학습시킨다고 말하는 것 같음. STFT는 Short Time Fourier Transform. mel spectrogram이 많이 쓰이고 vocoder 같은 모듈이 waveform을 복원함
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 유닛 1-2. MINDS-14는 e-banking 시스템 사용자들의 요청 사항들을 기록한 데이터셋. 저자들 덕분에 이제 좀 손에 잡히는 기분. 유닛 1-3. resampling. 오디어 데이터를 전처리를 위한
+  WhisperFeatureExtractor 객체 사용법. 유닛 1-4. streaming mode를 이용해 막대한 사이즈의 오디오 데이터 관리. 허깅페이스 데이터셋을 로드하기 위한 게정 및 토큰 생성
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 유닛 2. 오디오 데이터를 이용한 downstream 태스크 맛보기. ASR은 음성 데이터를 텍스트 데이터로 기록하는 작업. 데이터가 비싼 이유를 알 것도 같음. 자연어와 엮이는 점이 매우 마음에 들고 있음.
+  이어서 유닛 3. 트랜스포머의 encoder-only 모델이 BERT. decoder-only 모델이 GPT2. 영상 데이터의 캡션을 다는 작업에 흥미가 생겼음. 오디오 데이터와 텍스트 데이터를 함께 다루기 때문. 영상도? Wav2Vec와
+  HuBERT는 waveform을 인코딩하여 트랜스포머 인코더에 주입하고 Whisper는 spectrogram을 인코딩하여 트랜스포머 인코더에 주입함. spectrogram이 waveform보다 computation cost가 적게 듦. 오디오 데이터를 위한
+  트랜스포머의 output embedding을 텍스트 데이터 또는 오디오 데이터로 변환시켜줘야 함. CTC는 encoder-only transformer에 사용되는 기술. CTC의 핵심 기술은 blank token. Whisper는 seq2seq 모델. STT task와
+  다르게 인코더에 텍스트 데이터를 넣고 디코더에 오디오 데이터 넣으면 TTS
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size18"><b>Robust Speech Recognition via Large-Scale Weak Supervision (Radford, et al.)</b></p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 세 번째 전환. 음성 데이터에 재미를 붙이기 위한 몸부림. End-to-End Spectro-Temporal Graph Attention Networks for Speaker Verification Anti-Spoofing and Speech Deepfake Detection
+</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
