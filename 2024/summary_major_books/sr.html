@@ -243,3 +243,35 @@
 </p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size18"><b>결국 다시 칼디로</b></p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">&bull; 토치와 칼디를 함께 이용. yesno 데이터셋을 통해 칼디가 음성인식 시스템을 구축하는 방법을 먼저 이해해보겠음</p>
+
+<p>&nbsp;</p>
+
+<pre id="code_1713341796812" class="python" data-ke-language="python" data-ke-type="codeblock"><code>
+  # [코드 1]: yesno 데이터셋의 한 샘플의 구성
+  yesno_example = yesno_dataset[0]
+  print(yesno_example)
+  print(yesno_example[0].shape)
+
+  '''
+  (tensor([[ 3.0518e-05,  6.1035e-05,  3.0518e-05,  ..., -1.8616e-03,
+          -2.2583e-03, -1.3733e-03]]),
+ 8000,
+ [0, 0, 0, 0, 1, 1, 1, 1])
+ 
+ torch.Size([1, 50800])
+  '''
+</code></pre>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">&bull; .</p>
+
+<p data-ke-size="size16">&bull; .</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
