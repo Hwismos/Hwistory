@@ -130,23 +130,23 @@
 <p>&nbsp;</p>
 
 <pre id="code_1713582929152" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>
-  # [코드 1]
-  docker run -it kaldiasr/kaldi:latest bash
-
-  # [코드 2]
-  docker ps
-  # CONTAINER ID   IMAGE           COMMAND   CREATED          STATUS          PORTS     NAMES
-  # 4a15750d4b9c   centos:latest   "bash"    40 seconds ago   Up 37 seconds             infallible_torvalds
-
-  # [코드 3]
-  docker diff {CONTAINER ID}
-
-  # [코드 4]
-  docker images
-
-  # [코드 5]
-  docker commit {CONTAINER ID} {IMAGE NAME}
-</code></pre>
+    # [코드 1]
+    docker run -it kaldiasr/kaldi:latest bash
+  
+    # [코드 2]
+    docker ps
+    # CONTAINER ID   IMAGE           COMMAND   CREATED          STATUS          PORTS     NAMES
+    # 4a15750d4b9c   centos:latest   "bash"    40 seconds ago   Up 37 seconds             infallible_torvalds
+  
+    # [코드 3]
+    docker diff {CONTAINER ID}
+  
+    # [코드 4]
+    docker images
+  
+    # [코드 5]
+    docker commit {CONTAINER ID} {IMAGE NAME}
+  </code></pre>
 
 <p>&nbsp;</p>
 
@@ -159,30 +159,30 @@
 <p>&nbsp;</p>
 
 <pre id="code_1713582929152" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>
-  # [코드 6]  
-  local/download_and_untar.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage https://www.openslr.org/resources/12 dev-clean
-  local/download_and_untar.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage https://www.openslr.org/resources/12 train-clean-100
-
-  # [코드 7]
-  docker system df -v
-
-  # [코드 8]
-  local/data_prep.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage/LibriSpeech/train-clean-100 data/train_clean_100
-  # [에러 8-1]: Please install 'flac' on ALL worker nodes!
-  # [결과 8-1]: successfully prepared data in data/train_clean_100
-  <!-- 
-  root@b13621f038d9:/opt/kaldi/egs/librispeech/s5# ls -li data/train_clean_100/
-  total 11432
-  127853 -rw-r--r-- 1 root root   10079 Apr 20 06:19 spk2gender  # 화자 → 성별 매핑
-  127854 -rw-r--r-- 1 root root  585891 Apr 20 06:19 spk2utt     # 화장 → 문장 매핑
-  127848 -rw-r--r-- 1 root root 5875339 Apr 20 06:19 text        # 텍스트 표시 양식
-  127851 -rw-r--r-- 1 root root 1011269 Apr 20 06:19 utt2spk     # 문장 → 화자 매핑
-  127830 -rw-r--r-- 1 root root 4213839 Apr 20 06:19 wav.scp     # 문장 오디오 양식
-  -->
-
-  # [코드 9]
-  apt-get install -y flac
-</code></pre>
+    # [코드 6]  
+    local/download_and_untar.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage https://www.openslr.org/resources/12 dev-clean
+    local/download_and_untar.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage https://www.openslr.org/resources/12 train-clean-100
+  
+    # [코드 7]
+    docker system df -v
+  
+    # [코드 8]
+    local/data_prep.sh /opt/kaldi/egs/librispeech/s5/path/to/data/storage/LibriSpeech/train-clean-100 data/train_clean_100
+    # [에러 8-1]: Please install 'flac' on ALL worker nodes!
+    # [결과 8-1]: successfully prepared data in data/train_clean_100
+    <!-- 
+    root@b13621f038d9:/opt/kaldi/egs/librispeech/s5# ls -li data/train_clean_100/
+    total 11432
+    127853 -rw-r--r-- 1 root root   10079 Apr 20 06:19 spk2gender  # 화자 → 성별 매핑
+    127854 -rw-r--r-- 1 root root  585891 Apr 20 06:19 spk2utt     # 화장 → 문장 매핑
+    127848 -rw-r--r-- 1 root root 5875339 Apr 20 06:19 text        # 텍스트 표시 양식
+    127851 -rw-r--r-- 1 root root 1011269 Apr 20 06:19 utt2spk     # 문장 → 화자 매핑
+    127830 -rw-r--r-- 1 root root 4213839 Apr 20 06:19 wav.scp     # 문장 오디오 양식
+    -->
+  
+    # [코드 9]
+    apt-get install -y flac
+  </code></pre>
 
 <p>&nbsp;</p>
 
@@ -234,16 +234,6 @@
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
-<p data-ke-size="size18"><b>Robust Speech Recognition via Large-Scale Weak Supervision (Radford, et al.)</b></p>
-
-<p>&nbsp;</p>
-
-<p data-ke-size="size16">
-  &bull; 세 번째 전환. 음성 데이터에 재미를 붙이기 위한 몸부림. End-to-End Spectro-Temporal Graph Attention Networks for Speaker Verification Anti-Spoofing and Speech Deepfake Detection
-</p>
-
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
-
 <p data-ke-size="size18"><b>결국 다시 칼디로</b></p>
 
 <p>&nbsp;</p>
@@ -268,10 +258,26 @@
   '''
 </code></pre>
 
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size18"><b>Robust Speech Recognition via Large-Scale Weak Supervision (Radford, et al.)</b></p>
+
 <p>&nbsp;</p>
 
-<p data-ke-size="size16">&bull; .</p>
+<p data-ke-size="size16">
+  &bull; 세 번째 전환. 음성 데이터에 재미를 붙이기 위한 몸부림. End-to-End Spectro-Temporal Graph Attention Networks for Speaker Verification Anti-Spoofing and Speech Deepfake Detection
+</p>
 
-<p data-ke-size="size16">&bull; .</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16">
+  &bull; 240424 수업. 교수님의 주요 피드백은 (1) 오류가 있었던 부분들을 문서로 정리할 것. (2) 너무 짧음. 더 자세한 내용을 원하심. 되려 H 교수님과 다르게 모든 내용을 전달하는 것을 원하심. 그것도 이해가
+  가는 부분이, 이미 내가 이야기한 것들을 당연한 것들이었기 때문
+</p>
+
+<p data-ke-size="size16">
+  &bull; 프레임에 대한 벡터가 최소 임베딩 단위. 항아리와 공의 비유. 한 개의 공이 한 프레임에 대한 벡터. 한 개 이상의 공이 들어 있는 항아리가 한 개 이상 모여 HMM을 구성. HMM의 출력 시퀀스를
+  \(\mathbf{Y}\)라고 할 때 \(P(\mathbf{x}|\mathbf{Y})\)를 높이는 것이 목적
+</p>
 
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
