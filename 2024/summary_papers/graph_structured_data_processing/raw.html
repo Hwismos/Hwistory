@@ -2,33 +2,50 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </p>
+
 <p data-ke-size="size18">
   <b>Graph Contrastive Learning with Augmentation</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.22]</i></p>
+
 <p data-ke-size="size16">
   &bull; 증강된 그래프 데이터는 그래프 구조와 연관된 레이블 정보를 훼손하지 않는 선에서 생성된 인공 데이터. 증강된 그래프로부터 생성한 두 표현의 상호정보량(의존성)이 최대가 되도록 인코더와 프로젝터의
   파라미터를 갱신
 </p>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
 <p data-ke-size="size18">
   <b>Node Classification Beyond Homophily: Towards a General Solution</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.11]</i></p>
+
 <p data-ke-size="size16">&bull; 동질성, 이질성에 무관한 적응적 성능 향상 기법. ALT-local은 ALT-global을 좀 더 유연하게 확장시킨 것. 코드 있음</p>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
 <p data-ke-size="size18">
   <b>Graph Contrastive Learning with Generative Adversarial Network</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.11]</i></p>
+
 <p data-ke-size="size16">&bull; Graph-GAN을 이용해 더 좋은 뷰를 생성함으로써 대조 학습의 성능을 향상시킴. 코드 없음&nbsp;</p>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
 <p data-ke-size="size18">
   <b>Efficient and Effective Edge-Wise Graph Representation Learning</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.11]</i></p>
+
 <p data-ke-size="size16">&bull; 정점의 표현에 기반하여 간선의 표현을 생성하였던 기존의 연구들의 문제점을 지적함. 코드 없음&nbsp;</p>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
 <p data-ke-size="size18">
   <b>ImGCL: Revisiting Graph Contrastive Learning on Imbalanced Node Classification</b>
 </p>
@@ -428,54 +445,76 @@
 <p data-ke-size="size18">
   <b>GRAPH AUTO-ENCODER VIA NEIGHBORHOOD WASSERSTEIN RECONSTRUCTION</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.12]</i></p>
+
 <p data-ke-size="size16">
   &bull; 목적 함수(\(\min_{\phi, \psi} \mathcal{M} (\phi, \psi)\))의 \(\mathcal{M}\)은 복원 손실(reconstruction error). \(\phi\)는 일반 GNN 인코더의 파라미터. proximity는 비슷한 정점끼리 연결되는
   성질(assortative)을 의미하고 structure는 차수가 높은 정점에 간선을 뻗는 성질(disassortative)을 의미함
 </p>
+
 <p data-ke-size="size16">&nbsp;</p>
+
 <p data-ke-size="size16"><i>[24.03.13]</i></p>
+
 <p data-ke-size="size16">
   &bull; k-layer 인코더로부터 생성한 정점 \(v\)의 표현 \(h_v^{(k)}\)로부터 디코더 \(\psi_p\)는 \(v\)의 k-hop 정점들의 표현 분포를 복원하고, 디코더 \(\psi_s\)는 \(v\)의 특징 정보를 복원하고, 디코더
   \(\psi_d\)는 \(v\)의 차수 정보를 복원함
 </p>
+
 <p data-ke-size="size16">&nbsp;</p>
+
 <p data-ke-size="size16"><i>[24.03.14]</i></p>
+
 <p data-ke-size="size16">&bull; neighbor_decoder 함수로부터 복원 손실 계산. 내부에서 차수 디코딩과 피처 디코딩도 수행. reconstruction_neighbor에서 Wasserstein distance 계산</p>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
 <p data-ke-size="size18">
   <b>MUSE: Multi-View Contrastive Learning for Heterophilic Graphs</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.12]</i></p>
+
 <p data-ke-size="size16">
   &bull; semantic view(SV)와 contextual view(CV)는 각각 양성 샘플을 생성하기 위해 서로 다른 랜덤 모수(\(p_s, p_c\))를 갖는 베르누이 분포로부터 마스킹 벡터(\(m \in \mathbb{R}^{F}\))와 마스킹
   행렬(\(\mathbf{E} \in \{0, 1\}^{N\times N}\))을 추출함
 </p>
+
 <p data-ke-size="size16">
   &bull; 정점 \(i\)에 대한 semantic representation(\(h_{i}^{s}\)), contextual representation(\(h_{i}^{c}\)), fused representation(\(h_{i}^{f} = h_{i}^{s} + \lambda_i h_{i}^{c}\))의 대조 손실을
   최소화함으로써 그래프 데이터의 구조적 일관성(perturbation invariant)을 보장함. \(\lambda_i\)는 \(h_{i}^{s}\)와 \(h_{i}^{c}\)뿐 아니라 정점의 차수(\(d_i\))도 고려함
 </p>
+
 <p data-ke-size="size16">&nbsp;</p>
+
 <p data-ke-size="size16"><i>[24.03.14]</i></p>
+
 <p data-ke-size="size16">&bull; fcs 객체에 5겹의 레이어를 적재. [2,3,4] 레이어는 프로젝션용. h1과 h2가 semantic, h3와 h4가 context. h1(h2)과 h3(h4)를 beta로 가중합해서 혼합(fused) 표현 생성</p>
+
 <p data-ke-size="size16">&nbsp;</p>
+
 <p data-ke-size="size16"><i>[24.03.21]</i></p>
+
 <p data-ke-size="size16">
   &bull; (1) between_sim.diag() = \(h_{i} \cdot \tilde{h}^T_{i}\). (2) refl_sim.sum(1) = \(\sum_{v_{j}} h_{i} \cdot h_{j}^T\). (3) between_sim.sum = \(\sum_{v_{j}} h_{i} \cdot \tilde{h}^T_{j}\). (4)
   refl_sim.diag() = \(h_{i} \cdot h_{i}^T\)
 </p>
+
 <p data-ke-size="size16">
   &bull; SV와 CV 기반의 대조 손실은 본인 정점만을 양성 샘플로 취급함. 하지만 랜덤 모수를 갖는 베르누이 분포로부터 샘플링한 양성 샘플과 비슷해지도록 표현을 강제하는 것이 유의미한지가 의심스러움.
   \(\lambda_{i}\)가 클수록 ego 표현보다 interacted 표현에 많이 의존함
 </p>
+
 <p data-ke-size="size16">
   &bull; heterophilous graph의 각 정점들은 이웃 정점들과의 유사성이 낮음. 따라서 ego 표현과 interacted 표현을 분리하여 학습하고자 하였고, 두 표현을 결합(fusing)하는 방법에 대한 자연스러운 의문을
   제기하였음
 </p>
 
 <p data-ke-size="size16">&nbsp;</p>
+
 <p data-ke-size="size16"><i>[24.03.26]</i></p>
+
 <p data-ke-size="size16">
   &bull; 랜덤 분포를 따르는 서로 다른 두 개의 뷰를 특징(semantic) 뷰, 구조(contextual) 뷰와 각각 대조함으로써 정점 자체에 대한 표현 벡터(\( \mathbf{h}_1 \))와 이웃 정점과의 상호 작용 결과에 대한 표현
   벡터(\( \mathbf{h}_3 \))를 구분(robust). 두 표현 벡터를 적절히(node-wise) 결합(fuse)함으로써 서로 다른 그래프 상의 각 정점이 갖는 다양한 이웃 정점과의 차별성(local diversity)을 학습할 수 있음
@@ -486,7 +525,11 @@
 <p data-ke-size="size18">
   <b>Half-Hop: A graph upsampling approach for slowing down message passing</b>
 </p>
+
 <p data-ke-size="size16"><i>[24.03.12]</i></p>
+
 <p data-ke-size="size16">&bull; 유향(directed) 그래프. 핵심 영역(receptive field)은 한 정점에 대한 임베딩을 생성하는데 중요한 역할을 하는 그래프 상의 한 부분</p>
+
 <p>[##_Image|kage@cB4okA/btsFI4htfnM/yCKD7Ar34S9ZWauKQEbqZK/img.png|CDM|1.3|{"originWidth":494,"originHeight":204,"style":"alignCenter"}_##]</p>
+
 <hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
