@@ -1,0 +1,60 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+
+<p data-ke-size="size18">
+  <b>A Comprehensive Survey on Graph Neural Networks (Wu, et al.)</b>
+</p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
+
+<p data-ke-size="size16">
+  &bull; 이 논문은 21년에 게재되었으며 8천회 이상 인용된 대표적인 GNN 서베이 논문입니다. 저자들은 GNN을 RecGNN(recurrent), ConvGNNs(convolutional), GAEs(autoencoders), STGNNs(spatial-temporal)로
+  분류하여 설명합니다. GNN의 공통적인 프로세스는 타겟 노드의 representation이 수렴할 때까지 이웃한 노드들의 정보를 전파하는 것입니다. 저자들이 제안한 각각의 분류에 속하는 대표적인 모델들을 살펴보도록
+  하겠습니다.
+</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; 모델들을 살펴보기 앞서, 대표적인 그래프 벤치마크 데이터셋들을 로드할 수 있는 환경을 구축하겠습니다. GREET(AAAI23)의 저자들이 데이터를 로드하는 코드를 잘 정리해서 올려두었기 때문에 이 코드를
+  이용하였습니다. <code>torch_geometric</code>의 <code>datasets</code> 모듈에서 각 데이터셋에 대한 Loader 객체들을 임포트하여 전처리된 데이터셋들을 [그림 1]과 같이 다운로드 받았습니다.
+</p>
+
+<p>[##_Image|kage@ZHsoO/btsHcLflmEW/Gdrxvhd6rctPcpJfhQCP5k/img.png|CDM|1.3|{"originWidth":118,"originHeight":282,"style":"alignCenter","caption":"그림 1"}_##]</p>
+
+<!-- <p data-ke-size="size16">&nbsp;</p> -->
+
+<p data-ke-size="size16">&bull; 먼저 RecGNN의 GGNN(Gated GNN)입니다. GGNN은 16년 ICLR에서 발표되었습니다.</p>
+
+<p data-ke-size="size16">$$ \begin{equation} \mathbf{h}_{v}^{(t)} = \mathsf{GRU} (\mathbf{h}_{v}^{(t-1)} \sum_{u \in N (v)} \mathbf{W} \mathbf{h}_{u}^{(t-1)}) \tag{1} \end{equation} $$</p>
+
+<p>[##_Image|kage@cerwjO/btsHdfN3ESL/WvbKNey5aLpYbCNs1GnKY1/img.png|CDM|1.3|{"originWidth":914,"originHeight":162,"style":"alignCenter","caption":"그림 2"}_##]</p>
+
+<!-- <p data-ke-size="size16">&nbsp;</p> -->
+
+<p data-ke-size="size16">
+  &bull; dgl 패키지에서 GGNN을 구현하고 bAbI 태스크(question-answering)를 수행하였습니다. bAbI 태스크 수행을 위한 파일 설치에 sudo 권한이 필요한지라 도커 환경에서 실습을 해본 뒤 정리할 수 있도록
+  하겠습니다.
+</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">&bull; 다음은 ConvGNN의 GCN입니다. GCN은 17년 ICLR에서 발표된 대표적인 그래프 신경망 모델입니다.</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">&bull; MPNN과 GAT</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">VGAE와 DGI, deepGMG</p>
+
+<p data-ke-size="size16">&nbsp;</p>
+
+<p data-ke-size="size16">Graph WaveNet과 GaAN</p>
+
+<!-- <p data-ke-size="size16">&nbsp;</p> -->
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
