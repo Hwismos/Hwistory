@@ -5,7 +5,7 @@
 
 <p data-ke-size="size18"><b>Pytorch</b></p>
 
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
 
 <p data-ke-size="size16">&bull; Pytorch의 Tensor 객체에 대해서 살펴봅니다.</p>
 
@@ -14,11 +14,24 @@
 <p data-ke-size="size16">
   &bull; <code>Tensor.unfold(dim, size, step)</code> 메소드는 size 단위의 슬라이스들로 구성된 Tensor의 view를 반환합니다. 이때 slices는 Tensor의 dimension 방향에 따라 구성됩니다. 예를 들어
   <code>Tensor.unfold(1,2,1)</code>이라고 한다면 dim 1 방향으로 한 스텝씩 움직이며 원소의 개수가 2개인 슬라이스를 구성합니다. 첫 번째 행에서 총 4개의 슬라이스를 구성한 뒤 두 번째 행에서 동일한 작업을
-  수행합니다. 결과적으로 (2, 4, 2) 형상의 view가 반환됩니다.
+  수행합니다. 결과적으로 (2, 4, 2) 형상의 view가 [그림 1]과 같이 반환됩니다.
 </p>
 
 <p>[##_Image|kage@nQg9n/btsHbtAeOLV/zTr4ivRmEPmqZ5aZfZevcK/img.png|CDM|1.3|{"originWidth":764,"originHeight":224,"style":"alignCenter","caption":"그림 1"}_##]</p>
 
 <!-- <p>&nbsp;</p> -->
 
-<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
+<p data-ke-size="size16">
+  &bull; <code>Tensor.contiguous()</code> 메소드는 콜러(caller) 텐서를 연속된 메모리 공간 상에 재할당합니다. unfold, view와 같이 콜러 텐서를 메모리 수준에서 변경하지 않고 오프셋 등의 값만을 바꾸는
+  함수들이 있습니다. 한 두번은 괜찮지만 이런 함수들을 연속으로 호출할 시에는 변환된 텐서의 형상에 적합한 메모리 공간을 할당해줘야 하며 이것이 contiguous 함수를 호출하는 이유입니다.
+</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">&bull; [그림 2]는 torch 패키지 내의 주요 패키지들입니다.</p>
+
+<p>[##_Image|kage@dUSvB4/btsHbl3yxMo/7fUSGDAPb2pFD0rr50EnnK/img.png|CDM|1.3|{"originWidth":281,"originHeight":233,"style":"alignCenter","caption":"그림 2"}_##]</p>
+
+<!-- <p>&nbsp;</p> -->
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style5" />
