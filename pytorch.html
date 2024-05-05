@@ -1,0 +1,24 @@
+<p data-ke-size="size16">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</p>
+
+<p data-ke-size="size18"><b>Pytorch</b></p>
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
+
+<p data-ke-size="size16">&bull; Pytorch의 Tensor 객체에 대해서 살펴봅니다.</p>
+
+<p>&nbsp;</p>
+
+<p data-ke-size="size16">
+  &bull; <code>Tensor.unfold(dim, size, step)</code> 메소드는 size 단위의 슬라이스들로 구성된 Tensor의 view를 반환합니다. 이때 slices는 Tensor의 dimension 방향에 따라 구성됩니다. 예를 들어
+  <code>Tensor.unfold(1,2,1)</code>이라고 한다면 dim 1 방향으로 한 스텝씩 움직이며 원소의 개수가 2개인 슬라이스를 구성합니다. 첫 번째 행에서 총 4개의 슬라이스를 구성한 뒤 두 번째 행에서 동일한 작업을
+  수행합니다. 결과적으로 (2, 4, 2) 형상의 view가 반환됩니다.
+</p>
+
+<p>[##_Image|kage@nQg9n/btsHbtAeOLV/zTr4ivRmEPmqZ5aZfZevcK/img.png|CDM|1.3|{"originWidth":764,"originHeight":224,"style":"alignCenter","caption":"그림 1"}_##]</p>
+
+<!-- <p>&nbsp;</p> -->
+
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style1" />
